@@ -1,0 +1,15 @@
+.slider {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.imgWrap {
+    /* height: 537px; */
+    background: #eee url(../image/homepage1.png) no-repeat 50%;
+}
+.sliderimg{
+    position: relative;
+}
+.sliderimg img{
+    width: 100%;
+}

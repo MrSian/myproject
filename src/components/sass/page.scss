@@ -1,0 +1,27 @@
+@function sp($px){
+    @return $px/37.5*1rem
+}
+html,body{
+    height: 100%;
+}
+#app{
+    height: 100%;
+}
+.classHeader{
+    height: 100%;
+}
+.am-tab-bar{
+    height: auto;
+    position: absolute;left: 0;bottom:0;right: 0;
+}
+.constent{
+    padding: 0.1rem;
+}
+.home_Lately{
+    li{
+        width: 25%;
+        height: 137px;
+        float: left;
+        border: sp(1) solid #ccc;
+    }
+}

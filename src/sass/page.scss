@@ -1,0 +1,24 @@
+@function sp($px){
+    @return $px/37.5*1rem
+}
+html,body{
+    height: 100%;
+}
+#Duckweed{
+    height: 100%;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.classHeader{
+    height: 100%;
+}
+.am-tab-bar{
+    height: auto;
+    position: fixed;left: 0;bottom:0;right: 0;
+}
+.am-tab-bar{
+    min-width: 320px !important;
+    max-width: 640px !important;
+    margin: 0 auto;
+}

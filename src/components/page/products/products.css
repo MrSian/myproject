@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* CSS Document */
+/* ============================ 重置css样式 ============================ */
+body, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#topbar{
+    top: 0px;
+    padding: 0;
+    width: 100%;
+    background: #89be48;
+    /* position: fixed; */
+    top: 0;
+    z-index: 999;
+    min-width: 320px;
+    max-width: 640px;
+    margin: auto;
+}
+
+.header-content {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.header-title {
+    margin: 0 auto;
+    line-height: 48px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.search-panel {
+    background-color: #f2f2f2;
+    padding: 7px 0;
+}
+.am-search-input{
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.am-search-value{
+    border-radius: 8px;
+}
+.productPage{
+    background: #fff;
+    margin-top: 25px;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.productstitle .productspan{
+    width: 100%;
+    display: inline-block;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    background: #f2f2f2;
+}
+.onlyStyle{
+    background: #fff;
+}
+.onlyStyle li {
+    height: 140px;
+    float: left;
+    width: 33%;
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    margin: 0 0 -1px -1px;
+}
+.onlyStyle li img {
+    width: 60%!important;
+    margin: auto;
+    padding-top: 1rem;
+    max-width: 100%;
+}
+.onlyStyle li span {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    font-size: 13px;
+}
