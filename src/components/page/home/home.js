@@ -36,12 +36,12 @@ class Home extends Component{
 				banner:data,
 				Duckweedlist:Dlist
             });
-            // console.log(this.state.Duckweedlist)
+            console.log(this.state.Duckweedlist)
           })
     }
-    
     render(){
         let {match}=this.props;
+        console.log(this.state.banner);
         return <div className="home">
         <Header/>
             <Carousel
@@ -49,9 +49,9 @@ class Home extends Component{
                 autoplayInterval={3000}
                 infinite={true}
                 >
-                {this.state.banner.map(goods => (
+                {this.state.banner.map((goods,idx) => (
                     <a
-                    key={goods.TargetId}
+                    key={idx}
                     // href="#"
                     style={{width: '100%' }}
                     >

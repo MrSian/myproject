@@ -100,6 +100,20 @@ class App extends Component{
             currentTab
         })
     }
+    componentWillReceiveProps (nextProps) {
+        // console.log(nextProps)
+        let hash=nextProps.location.pathname
+        let currentTab=0
+        this.state.tabs.some((item,idx)=>{
+            if(item.path===hash){
+                currentTab=idx
+            }
+            return item.path===hash
+        })
+        this.setState({
+            currentTab
+        })
+    }
     render(){ 
         return  <div className='classHeader'>
         <div className='constent'>

@@ -24,7 +24,7 @@ class Wandering extends Component{
           })
           .then(res => {
             let data = res.data.InnerData;
-            console.log(data)
+            // console.log(data)
             this.setState({
 				Wanderinglist:data.StrollList.splice(2),
 			});
