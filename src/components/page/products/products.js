@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import axios from 'axios';
 
 import {withRouter} from 'react-router-dom';
-import './products.css'
 import { List,Carousel,Grid,SearchBar } from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -54,10 +53,12 @@ class Products extends Component{
     }
     handlerGotoDetails(goods){
         //获取history
+        console.log(goods)
         let {history} = this.props;
-        // console.log(history);
+        console.log(history);
+        // /home/2860/2877
         history.push({
-            pathname:'/goods/'+goods.proId,
+            pathname:'/home/2860/'+goods.ItemIndexId,
             state:goods
         });
     }
@@ -84,35 +85,27 @@ class Products extends Component{
                     </span>
                     <div>
                         <ul className="onlyStyle">
-                        {productdest.Children.map(productli => (
-                            <li key={productli.ItemIndexId}>
-                            {/* productli.Icon */}
-                                <img src={'http://i.lifevccdn.com'+productli.Icon} />
-                                <span>{productli.Name}</span>
-                            </li>
-                        ))}
+                            <Grid
+                            data={productdest.Children} 
+                            columnNum={3} 
+                            activeClassName="active" 
+                            itemStyle={{height:'140px'}}
+                            renderItem={(goods,idx)=>{
+                                return(
+                                    <li key={goods.ItemIndexId}>
+                                            {/* productli.Icon */}
+                                                <img src={'http://i.lifevccdn.com'+goods.Icon} />
+                                                <h5 className='activespan'>{goods.Name}</h5>
+                                    </li>
+                                )
+                            }}
+                            onClick={this.handlerGotoDetails}
+                            />
                         </ul>
                     </div>
                 </div>
             ))}
             </div>
-            <Grid
-            data={this.state.goodslist} 
-            columnNum={2} 
-            activeClassName="active" 
-            itemStyle={{height:'330px'}}
-            renderItem={(goods,idx)=>{
-                return(
-                    <div className="goods-item">
-                        <img width='100%' src={goods.proImg} />
-                        <h4>{goods.proName}</h4>
-                        <p className="price">原价：<del>{goods.proPrice.toFixed(2)}</del></p>
-                        <p className="price">现价：<span>{(goods.proPrice*goods.sellPercent/100).toFixed(2)}</span></p>
-                    </div>
-                )
-            }}
-            onClick={this.handlerGotoDetails}
-            />
 
         </div>
     }

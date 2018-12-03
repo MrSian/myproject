@@ -1,13 +1,21 @@
 @function sp($px){
-    @return $px/37.5*1rem
+    @return $px/37.5*2rem
 }
+/* CSS Document */
+/* ============================ 重置css样式 ============================ */
+body, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 html,body{
     height: 100%;
 }
 #Duckweed{
     height: 100%;
-    min-width: 320px;
-    max-width: 640px;
+    min-width: sp(320);
+    max-width: sp(640);
     margin: 0 auto;
 }
 .classHeader{
@@ -18,7 +26,69 @@ html,body{
     position: fixed;left: 0;bottom:0;right: 0;
 }
 .am-tab-bar{
-    min-width: 320px !important;
-    max-width: 640px !important;
+    min-width: sp(320) !important;
+    max-width: sp(640) !important;
     margin: 0 auto;
+}
+#topbar{
+    top: sp(0);
+    padding: 0;
+    width: 100%;
+    background: #89be48;
+    /* position: fixed; */
+    top: 0;
+    z-index: 999;
+    min-width: sp(320);
+    max-width: sp(640);
+    margin: auto;
+}
+
+.header-content {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.header-title {
+    margin: 0 auto;
+    line-height: sp(48);
+    font-size: sp(20);
+    text-align: center;
+    color: #fff;
+    width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.search-panel {
+    background-color: #f2f2f2;
+    padding: sp(7) 0;
+}
+.am-search-input{
+    border-radius: sp(8);
+    font-weight: bold;
+    font-size: sp(15);
+}
+.am-search-value{
+    border-radius: sp(8);
+}
+.productPage{
+    background: #fff;
+    margin-top: sp(25);
+    min-width: sp(320);
+    max-width: sp(640);
+    margin: 0 auto;
+}
+.productstitle .productspan{
+    width: 100%;
+    display: inline-block;
+    height: sp(36);
+    text-align: center;
+    line-height: sp(36);
+    color: #333;
+    font-weight: bold;
+    font-size: sp(20);
+    background: #f2f2f2;
+}
+.onlyStyle{
+    background: #fff;
 }
