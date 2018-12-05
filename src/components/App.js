@@ -5,12 +5,13 @@ import 'antd-mobile/dist/antd-mobile.css'
 import '../css/page.css';
 import '../sass/page.scss'
 // 底部 footer
-import {Home} from './page/home/home'
-import {Products} from './page/products/products'
-import {Wandering} from './page/Wandering/Wandering'
-import {ShoppingCart} from './page/ShoppingCart/ShoppingCart'
-import {Account} from './page/account/account'
-import {NotFound,Helep} from './page/NotFound/NotFound'
+import {Home} from './page/home/home'  //首页
+import {Products} from './page/products/products' //全部产品
+import {Wandering} from './page/Wandering/Wandering' //闲逛页面
+import {ShoppingCart} from './page/ShoppingCart/ShoppingCart'  //购物车
+import {Account} from './page/account/account'  //账户中心
+import {NotFound,Helep} from './page/NotFound/NotFound'  //404页面
+import {Detils} from './page/detils/detils'   //详情页面
 
 import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
 
@@ -117,10 +118,11 @@ class App extends Component{
     render(){ 
         return  <div className='classHeader'>
         <div className='constent'>
-        <Switch>
+        <Switch>   
             <Route path="/home" component={Home} />
             <Route path="/Products" component={Products} />
             <Route path="/Wandering" component={Wandering} />
+            <Route path="/Detils/:id" component={Detils} />
             <Route path="/ShoppingCart" component={ShoppingCart} />
             <Route path="/account" component={Account} />
             <Route path="/404" component={NotFound} />
@@ -135,7 +137,6 @@ class App extends Component{
         >
             {
                 this.state.tabs.map((tab,idx)=>{
-                    // console.log(this.state.tabs.map)
                     return  <TabBar.Item
                             title={tab.title}
                             key={tab.path}

@@ -29,7 +29,7 @@ class Header extends Component{
         this.setState({
             headerTab:idx
         })
-        console.log(this.state.headerTab)
+        // console.log(this.state.headerTab)
         //改变url地址
         let {history,match} = this.props;
         let url = match.path + tab.ItemIndexId
@@ -81,7 +81,28 @@ class Header extends Component{
                     ()=><strong>我的家务页面</strong>
                     
                     } />
-                <Route path={match.url+"/2859"} render={()=><strong>我的下厨页面</strong>} />
+                <Route path={match.url+"/2859"} render={()=><div className='wrapShelf'>
+                    <div className="subcattitle">最近一周新品</div>
+                    <div className='shelfItem'>
+                        <a className='itempicig'><img  src="http://i.lifevccdn.com/upload/AppItemInfoImage/293dc63f3df84fc082e038364c2db21c_d1242x0.jpg" lazy="loaded" /></a>
+                        <div className='itemPanel'>
+                            <div  className="titleclearFix">
+                            不锈钢双层多用锅
+                            </div>
+                            <div  className="itemprice">
+                                <div  className="pricecont">
+                                <span  className="act-tag" ></span> 
+                                <span>￥</span> 
+                                <span>129</span>&nbsp;
+                                <span className="originalPrice"></span> 
+                                <span  className="promoLable">新</span>
+                                </div> 
+                                <div className="itemComment">评论：0</div>
+                            </div>
+                        </div>
+                    </div>
+                <strong>我的下厨页面</strong>
+                </div>} />
                 <Route path={match.url+"/2861"} render={()=><strong>我的生活页面</strong>} />
                 <Route path={match.url+"/2865"} render={()=><strong>我的家居服页面</strong>} />
                 <Route path={match.url+"/2862"} render={()=><strong>我的床品页面</strong>} />

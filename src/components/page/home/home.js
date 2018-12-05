@@ -36,12 +36,12 @@ class Home extends Component{
 				banner:data,
 				Duckweedlist:Dlist
             });
-            console.log(this.state.Duckweedlist)
+            // console.log(this.state.Duckweedlist)
           })
     }
     render(){
         let {match}=this.props;
-        console.log(this.state.banner);
+        // console.log(this.state.banner);
         return <div className="home">
         <Header/>
             <Carousel

@@ -54,7 +54,7 @@ class Products extends Component{
     handlerGotoDetails(goods){
         //获取history
         console.log(goods)
-        let {history} = this.props;
+        let {history} = this.props;  
         console.log(history);
         // /home/2860/2877
         history.push({

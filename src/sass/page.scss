@@ -1,36 +1,69 @@
-@function sp($px){
+@function sp($px) {
     @return $px/37.5*2rem
 }
+
 /* CSS Document */
 /* ============================ 重置css样式 ============================ */
-body, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+th,
+td {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-html,body{
+html,
+body {
     height: 100%;
+    font-family: '微软雅黑';
 }
-#Duckweed{
+
+#Duckweed {
     height: 100%;
     min-width: sp(320);
     max-width: sp(640);
     margin: 0 auto;
 }
-.classHeader{
+
+.classHeader {
     height: 100%;
 }
-.am-tab-bar{
+
+.am-tab-bar {
     height: auto;
-    position: fixed;left: 0;bottom:0;right: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
-.am-tab-bar{
+
+.am-tab-bar {
     min-width: sp(320) !important;
     max-width: sp(640) !important;
     margin: 0 auto;
 }
-#topbar{
+
+#topbar {
     top: sp(0);
     padding: 0;
     width: 100%;
@@ -48,6 +81,7 @@ html,body{
     margin: 0 auto;
     position: relative;
 }
+
 .header-title {
     margin: 0 auto;
     line-height: sp(48);
@@ -59,26 +93,31 @@ html,body{
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
 .search-panel {
     background-color: #f2f2f2;
     padding: sp(7) 0;
 }
-.am-search-input{
+
+.am-search-input {
     border-radius: sp(8);
     font-weight: bold;
     font-size: sp(15);
 }
-.am-search-value{
+
+.am-search-value {
     border-radius: sp(8);
 }
-.productPage{
+
+.productPage {
     background: #fff;
     margin-top: sp(25);
     min-width: sp(320);
     max-width: sp(640);
     margin: 0 auto;
 }
-.productstitle .productspan{
+
+.productstitle .productspan {
     width: 100%;
     display: inline-block;
     height: sp(36);
@@ -87,8 +126,449 @@ html,body{
     color: #333;
     font-weight: bold;
     font-size: sp(20);
-    background: #f2f2f2;
+    // background: #b66969;
 }
-.onlyStyle{
+
+.onlyStyle {
     background: #fff;
+}
+
+.wrapShelf {
+    width: 100%;
+
+    .subcattitle {
+        max-width: 96%;
+        text-align: center;
+        font-size: sp(25);
+        color: #000;
+        line-height: sp(40);
+        margin: sp(5) auto sp(-25);
+    }
+
+    .shelfItem {
+        width: 96%;
+        border: sp(1) solid #ddd;
+        margin: 2rem auto 0;
+
+        .itempicig {
+            width: 100%;
+            overflow: hidden;
+            display: block;
+            position: relative;
+        }
+
+        img {
+            // height: sp(163);
+            width: 100%;
+            display: block;
+            vertical-align: top;
+            margin: 0 auto;
+            position: static;
+        }
+
+        .itemPanel {
+            width: 100%;
+            background: #fff;
+            color: #333;
+            padding-bottom: sp(4);
+            overflow: hidden;
+            font-size: sp(20);
+            line-height: sp(32);
+
+            .titleclearFix {
+                width: 94%;
+                overflow: hidden;
+                margin: 0 auto;
+                text-align: left;
+                font-size: sp(20);
+                color: #333;
+                line-height: sp(30);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding-top: sp(7);
+            }
+
+            .itemprice {
+                width: 94%;
+                overflow: hidden;
+                margin: 0 auto;
+
+                .pricecont {
+                    min-width: 68%;
+                    overflow: hidden;
+                    float: left;
+                    line-height: sp(20);
+                    margin-top: sp(4);
+                }
+
+                .itemComment {
+                    float: right;
+                    text-align: right;
+                    color: #999;
+                }
+
+                .promoLable {
+                    display: inline-block;
+                    color: #fff;
+                    background-color: #c00;
+                    padding: sp(2) sp(4);
+                }
+            }
+        }
+    }
+}
+
+// 闲逛页面
+
+.strollTypeItem {
+    margin: 0 1%;
+    font-weight: bold;
+}
+
+.strollItemLayer {
+    position: relative;
+    border-radius: sp(8);
+}
+
+.strollItemTitle {
+    font-size: sp(9.5);
+    padding: sp(4) 0 sp(2);
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+}
+
+.strollPriceBar {
+    margin: sp(5) 0;
+    text-align: left;
+    width: 100%;
+    font-size: sp(9);
+    height: sp(285);
+    overflow: hidden;
+}
+
+.strollItemImg {
+    width: 100%;
+    border-radius: sp(8);
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.tagNew {
+    font-weight: normal;
+    background-color: #79da87;
+    max-width: 94%;
+    width: sp(45);
+    overflow: hidden;
+    display: inline-block;
+    font-size: sp(12);
+    color: #fff;
+    line-height: sp(14);
+    padding: sp(3);
+    position: absolute;
+    left: 0;
+    top: sp(8);
+}
+
+.strollItemTitle a {
+    color: #333;
+    float: left;
+    margin-left: sp(10);
+    text-decoration: none;
+    font-size: sp(13.5);
+
+}
+
+.strollPriceBar .price {
+    font-size: sp(20);
+    line-height: sp(20);
+    display: inline-block;
+    color: #ff475d;
+    font-weight: 400;
+    overflow: hidden;
+    text-align: left;
+    width: auto;
+    margin-left: sp(5);
+}
+
+.strollPriceBar .comment {
+    font-size: sp(14);
+    line-height: sp(15);
+    width: auto;
+    max-width: none;
+    overflow: hidden;
+    float: right;
+    display: inline-block;
+    text-align: right;
+    color: #999;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    margin-right: sp(5);
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+
+
+
+// 详情页面
+.itemprices {
+    height: sp(129);
+    background: #fff;
+}
+
+.detilstitle {
+    padding: 0;
+    text-align: center;
+    font-size: sp(25);
+    color: #000;
+    height: sp(35);
+    line-height: sp(35);
+}
+
+.detilstitleimg {
+    ul {
+        height: sp(375) !important;
+    }
+}
+
+.detilstitleimg img {
+    width: 100%;
+    height: sp(375) !important;
+}
+
+.detilsdes {
+    text-align: center;
+    font-size: sp(20);
+    color: #999;
+    height: .3rem;
+    line-height: sp(30);
+    // margin-top: .14rem;
+}
+
+.detilspricecntr {
+    margin-top: sp(25);
+    font-size: sp(25);
+    text-align: center;
+    line-height: sp(35);
+    height: sp(35);
+    // line-height: p();
+    // margin-top: .2rem;
+}
+
+.lablewrap {
+    text-align: center;
+}
+
+#promoWrap {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: .1rem 0;
+    margin-left: sp(14);
+}
+
+.detilslistdl dd {
+    background-color: #fff;
+    margin: 0;
+}
+
+.promoitem {
+    padding: sp(10) 0;
+    font-size: sp(15);
+    position: relative;
+    width: sp(75);
+    width: 100%;
+}
+
+.tagpromo.bgred {
+    display: inline-block;
+    background: #cd060f;
+    color: #fff;
+    zoom: .5;
+    border: 0;
+}
+
+.mtxt {
+    font-size: sp(12);
+    height: sp(3);
+    line-height: sp(3);
+    padding-left: sp(14);
+}
+
+.GroupAttrs {
+    color: rgb(116, 91, 91);
+    display: flex;
+    flex-wrap: wrap;
+
+    .GroupAttrsone {
+        margin-top: sp(15);
+        width: 100%;
+
+        span {
+            font-size: sp(13);
+            margin-left: sp(14);
+        }
+
+        li {
+            float: left;
+            margin-top: sp(5);
+            padding: sp(10) sp(2) sp(10) sp(10);
+
+            span {
+                padding: sp(10);
+                border: 1px solid #ccc;
+                height: 0;
+                border-color: transparent #83b842 #83b842 transparent;
+            }
+        }
+    }
+
+    .GroupAttrsfive {
+        float: left;
+
+        input {
+            box-sizing: border-box;
+            width: sp(34);
+            height: sp(34);
+            line-height: sp(4);
+            text-align: center;
+        }
+    }
+
+    .GroupAttrfour {
+        a {
+            margin-left: sp(5);
+        }
+
+        p {
+            margin-left: sp(34);
+            color: red;
+        }
+    }
+
+}
+
+.ServiceIcon {
+    margin-top: sp(10);
+}
+
+.hesmartop {
+    margin-top: sp(20);
+    height: sp(10);
+    background: #e94848;
+
+    img {
+        width: sp(375);
+        height: sp(375);
+    }
+}
+
+
+
+// 添加购物车样式
+.item-footer { 
+    width: 100%;
+    // background: #c00;  
+    height: sp(49);
+    z-index: 500;
+    background: #e94848;
+    padding: sp(4) 0 sp(4)
+}
+
+.item-footer .f-service {
+    width: 13%;
+    height: sp(40);
+    overflow: hidden;
+    float: left;
+    color: rgb(87, 79, 79);
+    line-height: sp(1);
+    font-size: sp(10);
+    text-align: center
+}
+
+.item-footer .f-service.f-heart {
+    margin-right: 3%
+}
+
+.svg-inline--fa {
+    font-size: sp(16);
+    width: 100%;
+    height: sp(30);
+    display: inline-block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    margin-bottom: sp(-2)
+}
+
+.fa-home {
+    margin-bottom: sp(2);
+}
+
+
+ .fa-user{
+    margin-bottom: sp(2);
+}
+
+.item-footer .f-service .ico-heart.active {
+}
+
+.fa-shopping-cart {
+    margin-left: sp(8);
+    width: 70%;
+    float: left;
+    height: 100%;
+    background-size: 50%;
+}
+
+.item-footer .f-service.f-cart {
+    width: 20%;
+    height: sp(48);
+    position: relative;
+    border: sp(1) solid #009d42;
+    border-radius: sp(10);
+    margin-right: 3%;
+    margin-left: 2%
+}
+
+.item-footer .f-service.f-cart .cart-num {
+    width: sp(32);
+    height: sp(32);
+    display: block;
+    background-color: #f60;
+    border-radius: 50%;
+    text-align: center;
+    font-size: sp(14);
+    color: #fff;
+    line-height: sp(32);
+    position: absolute;
+    right: 20%;
+    top: sp(10)
+}
+
+.item-footer .f-btn-add {
+    width: 45%;
+    height: sp(48);
+    overflow: hidden;
+    float: left;
+    background-color: #009d42;
+    border: 0;
+    text-align: center;
+    font-size: sp(17);
+    color: #fff;
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: sp(5)
 }
