@@ -1,19 +1,14 @@
 import React,{Component} from 'react';
-import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
-import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
-import New from './new';
-import Header from './header'
+import {Carousel} from 'antd-mobile';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
-import '../../../css/home.css';
 class Home extends Component{
     constructor(){
         super();
         this.state={
             // 轮播图数组
             banner:[],
-            // 全部产品列表
             Duckweedlist:[],
-             
         }
     }
     componentWillMount(){
@@ -29,21 +24,17 @@ class Home extends Component{
             let Dlist=[];
             for(let a=1;a<Duck.length;a++){
                 Dlist.push(Duck[a].InnerData)
-                // console.log(Duck[a].InnerData)
             }
             
             this.setState({
 				banner:data,
 				Duckweedlist:Dlist
             });
-            // console.log(this.state.Duckweedlist)
           })
     }
     render(){
         let {match}=this.props;
-        // console.log(this.state.banner);
         return <div className="home">
-        <Header/>
             <Carousel
                 autoplay={true}
                 autoplayInterval={3000}
@@ -83,5 +74,4 @@ class Home extends Component{
     }
 }
 Home = withRouter(Home);
-
 export {Home};

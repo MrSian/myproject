@@ -6,6 +6,23 @@ import {faHome, faShoppingCart,faUser} from '@fortawesome/free-solid-svg-icons' 
 
 library.add(faHome, faShoppingCart,faUser)
 class  getshopping extends Component{
+    // 添加到购物车
+    handlerAddToCart(goods){
+        let has = this.props.cartlist.filter(item=>{
+            return item.proId == goods.proId
+        });
+        if(has.length){
+            // 存在
+            this.props.changeQty(goods.proId,++goods.qty);
+        }else{
+            goods.qty = 1;
+            this.props.addToCart(goods);
+        }
+       
+    }
+    componentWillMount(){
+        console.log(this)
+    }
     render(){
     return <div className="getshopping">
         <footer  className="item-footer" style={{position: 'fixed', bottom: '0px'}}>

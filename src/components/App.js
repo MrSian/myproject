@@ -1,11 +1,13 @@
 import React,{Component} from 'react';
+import {connect} from 'react-redux';
+
 import { TabBar } from 'antd-mobile';
 // 引入TabBar样式
 import 'antd-mobile/dist/antd-mobile.css'
 import '../css/page.css';
 import '../sass/page.scss'
 // 底部 footer
-import {Home} from './page/home/home'  //首页
+import {Home} from './page/home/lifeVC'  //首页
 import {Products} from './page/products/products' //全部产品
 import {Wandering} from './page/Wandering/Wandering' //闲逛页面
 import {ShoppingCart} from './page/ShoppingCart/ShoppingCart'  //购物车
@@ -70,14 +72,11 @@ class App extends Component{
         }
     }
     handlerClick(idx,path){
-        // console.log('111')
         this.setState({
             currentTab:idx
         });
         
         // 编程时导航:
-        // console.log(this.props.history)
-        // console.log(path)
         if(this.props.history.location.pathname==path){
             return false;
         }
@@ -89,7 +88,7 @@ class App extends Component{
         //获取hash的值
         let hash=window.location.hash.slice(1);
         //找出对应索引值
-        console.log(hash)
+        // console.log(hash)
         let currentTab=0
         this.state.tabs.some((item,idx)=>{
             if(item.path===hash){
@@ -100,6 +99,7 @@ class App extends Component{
         this.setState({
             currentTab
         })
+        // console.log(this.props)
     }
     componentWillReceiveProps (nextProps) {
         // console.log(nextProps)
@@ -115,7 +115,8 @@ class App extends Component{
             currentTab
         })
     }
-    render(){ 
+    render(){
+        // console.log(this.state)
         return  <div className='classHeader'>
         <div className='constent'>
         <Switch>   
@@ -130,9 +131,11 @@ class App extends Component{
             <Redirect  to="/404" />
         </Switch>
         </div>
+        {/* ui组件 容器组件: 函数创建的无状态组件 称为Ui组件 受控组件 */}
         <TabBar
         unselectedTintColor="#c2c2c2"
         tintColor="green"
+        hidden={!this.props.tabbarStatus}
         noRenderContent={true}
         >
             {
@@ -144,6 +147,7 @@ class App extends Component{
                             selectedIcon={<FontAwesomeIcon icon={tab.icon} />}
                             selected={this.state.currentTab === idx}
                             onPress={this.handlerClick.bind(this,idx,tab.path)}
+                            badge={tab.path == '/ShoppingCart' ? this.props.cartQty : null}
                             >
                             {tab.title}
                             </TabBar.Item>
@@ -153,6 +157,16 @@ class App extends Component{
         </div>
     }
 }
+let mapStateToProps = state=>{
+    // 此处必须返回一个对象
+    // console.log(state);
+    return {
+        //把state.commonReducer.tabbarStatus映射到props
+        tabbarStatus:state.commonReducer.tabbarStatus,
+        cartQty:state.cartReducer.goodslist.length
+    }
+}
+App = connect(mapStateToProps)(App); //{connect} 的使用  把什么暴露出去
 // 利用组件传递参数
 App=withRouter(App)
 export default App;

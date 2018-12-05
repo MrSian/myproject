@@ -22,7 +22,7 @@ class Wandering extends Component{
           })
           .then(res => {
             let data = res.data.InnerData;
-            console.log(data)
+            // console.log(data)
             this.setState({
 				Wanderinglist:data.StrollList.splice(2),
 			});
@@ -30,9 +30,9 @@ class Wandering extends Component{
     }
     WanderingDetails(goods){
         //获取history
-        console.log(goods)
+        // console.log(goods)
         let {history} = this.props;
-        console.log(history);
+        // console.log(history);
         history.push({
             pathname:'/Detils/'+goods.ItemInfoID,
             state:goods

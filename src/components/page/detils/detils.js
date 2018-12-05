@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
-// import {connect} from 'react-redux';
-
-import Getshopping  from './getshopping';
-
 import axios from 'axios';
-
-// import {cart,tabbar} from '../actions';
+import {cart,tabbar} from '../../../actions';
+import {connect} from 'react-redux';
+// fontawesome 图标库
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'  //组件
+import {faHome, faShoppingCart,faUser} from '@fortawesome/free-solid-svg-icons'  //图标
+library.add(faHome, faShoppingCart,faUser)
 class Detils  extends Component{
     // 这是主页面
     constructor(){
@@ -20,10 +21,11 @@ class Detils  extends Component{
             Prompts:[],
             props:[],
             vals:[],
+            dataInfoID:[],
         }
     }
     componentWillMount(){
-        console.log('goodsprops:',this.props)
+        // console.log('goodsprops:',this.props)
         // 判断是否传入商品信息
         let {state:Detilslist} = this.props.location;
         if(Detilslist){
@@ -31,28 +33,15 @@ class Detils  extends Component{
             localStorage.setItem('Detilslist',JSON.stringify(Detilslist));
         }else{
             // 如果没有传入，则重新发起请求
-            // let {id} = this.props.match.params;
-            // axios.get(`/jxapi/m_v1/goods/detailPromo/${id}`).then(res=>{
-            //     this.setState({
-            //         goods:res.data
-            //     })
-            // })
-
             Detilslist = JSON.parse(localStorage.getItem('Detilslist'));
           
         }
-        
-        // console.log(Detilslist.ItemInfoID)
+        let dataInfoID=Detilslist;
         let ItemInfoID=Detilslist.ItemInfoId;
         if(ItemInfoID){
-            // console.log('111')
         }else{
             ItemInfoID=Detilslist.ItemInfoID;
         }
-        // Detilslist.ItemInfoID===null?Detilslist.ItemInfoID:'33333';
-        // ItemInfoId
-        // http://app.lifevc.com?
-        // http://app.lifevc.com/1.0/v_h5_5.1.2_33/items/itemview?Iteminfoid=30861&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true
         axios.get("/lifevtwo/1.0/v_h5_5.1.2_33/items/itemview", {
             params: {
                 Iteminfoid:ItemInfoID,
@@ -80,15 +69,37 @@ class Detils  extends Component{
                 ServiceIcon,
                 Prompts,
                 props,
+                dataInfoID,
             });
+            // 隐藏底部菜单
+            this.props.changeTabbarStatus(false);
         })
     }
+     // 添加到购物车
+     handlerAddToCart(Detilslist){
+        let goods=Detilslist;
+        console.log(goods);
+        let has = this.props.cartlist.filter(item=>{
+            return item.proId == goods.proId
+        });
+            goods.qty = 1;
+            this.props.addToCart(goods);
+        // if(has.length){
+        //     // 存在
+        //     this.props.changeQty(goods.proId,++goods.qty);
+        // }else{
+        //     goods.qty = 1;
+        //     this.props.addToCart(goods);
+        // }
+       
+    }
     componentWillUnmount(){
+        this.props.changeTabbarStatus(true);
     }
     render(){
-    let {Detilslist,DetilImageUrl,ServiceIcon,Prompts, props,vals,} = this.state;
+
+    let {Detilslist,DetilImageUrl,ServiceIcon,Prompts, props,vals,dataInfoID} = this.state;
     return <dl i="detilslistdl">
-    <Getshopping />
         <div id="topbar" className="header" >
                 <div  className="header-content">  
                     <p  className="header-title">商品介绍</p>  
@@ -102,7 +113,6 @@ class Detils  extends Component{
         >
         {this.state.Detilsheaderimg.map((productdest,idx) => (
              <img key={idx} src={'http://i.lifevccdn.com'+productdest.ImageUrl} />
-            
             ))}
         </Carousel>
         </div>
@@ -177,7 +187,43 @@ class Detils  extends Component{
              src={'http://i.lifevccdn.com'+ImageUrls.ImageUrl} />
         ))}
         </div>
+        <div className="getshopping">
+        <footer  className="item-footer" style={{position: 'fixed', bottom: '0px'}}>
+            <div  className="f-service f-kefu">
+            <FontAwesomeIcon icon={faUser}/>
+            <br/>
+                <span >客服</span>
+            </div>  
+            <a  href="#/" className="f-service f-home">
+            <FontAwesomeIcon icon={faHome}/> <br/><span >首页</span>
+            </a> <i className={"fal fa-user-astronaut"}></i>
+            <a  target="_self" className="f-service f-cart">
+            <FontAwesomeIcon icon={faShoppingCart}/>
+                <span  className="cart-num">8</span>
+            </a> 
+            <button onClick={this.handlerAddToCart.bind(this,dataInfoID)} className="f-btn-add">加入购物车</button> 
+        </footer>
+    </div>
     </dl>
     }
 }
+let mapStateToProps=state=>({cartlist:state.cartReducer.goodslist});
+let mapDispatchToProps = dispatch=>{
+    return {
+        // 把changeTabbarStatus方法映射到props
+        changeTabbarStatus(status){
+            dispatch(tabbar(status));
+        },
+        addToCart(Detils){
+            dispatch(cart.add(Detils))
+        },
+        changeQty(proId,qty){
+            dispatch(cart.change(proId,qty))
+        }
+    }
+}
+// provider  :给下面所有子组件提供store   connect(连接)
+// 组件分类：ui组件（职责简单，只负责Ui的呈现，内容只依赖props） 容器组件
+// 参数1：自定义映射参数  参数2：
+Detils=connect(mapStateToProps,mapDispatchToProps)(Detils)
 export {Detils}

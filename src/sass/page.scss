@@ -133,6 +133,50 @@ body {
     background: #fff;
 }
 
+.slider {
+    position: relative;
+    margin-bottom: 1rem;
+}
+//头部样式
+.wrapHeard{
+    width: auto;
+    height: 48px;
+    background: #89be48;
+    .headerIco {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url(../image/logo.png) no-repeat;
+        background-size: 50%;
+        background-position: 50%;
+    }
+    .headTypeimg {
+        width: 44PX;
+        height: 44PX;
+        display: block;
+        float: right;
+        position: absolute;
+        z-index: 1000;
+        top: 0;
+        right: 20;
+        background-size: 45%;
+        background-image: url(../image/ICON.png);
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+}
+// 首页样式
+.imgWrap {
+    /* height: 537px; */
+    background: #eee url(../image/homepage1.png) no-repeat 50%;
+}
+.sliderimg{
+    position: relative;
+    img{
+        width: 100%;
+    }
+}
+
 .wrapShelf {
     width: 100%;
 
@@ -466,7 +510,7 @@ i {
 .hesmartop {
     margin-top: sp(20);
     height: sp(10);
-    background: #e94848;
+    background: #89be48;
 
     img {
         width: sp(375);
@@ -477,98 +521,113 @@ i {
 
 
 // 添加购物车样式
-.item-footer { 
-    width: 100%;
-    // background: #c00;  
-    height: sp(49);
-    z-index: 500;
-    background: #e94848;
-    padding: sp(4) 0 sp(4)
+.getshopping{
+    min-width: sp(320);
+    max-width: sp(640);
+    .item-footer { 
+        width: 100%;
+        min-width: sp(320);
+        max-width: sp(640);
+        height: sp(49);
+        background: #89be48;
+        padding: sp(4) 0 sp(4)
+    }
+    
+    .item-footer .f-service {
+        width: 13%;
+        height: sp(40);
+        overflow: hidden;
+        float: left;
+        color: rgb(87, 79, 79);
+        line-height: sp(1);
+        font-size: sp(10);
+        text-align: center
+    }
+    
+    .item-footer .f-service.f-heart {
+        margin-right: 3%
+    }
+    
+    .svg-inline--fa {
+        font-size: sp(20) !important;
+        width: 100%;
+        margin-top: sp(2);
+        height: sp(20);
+        display: inline-block;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 35%;
+    }
+    
+    .fa-home {
+        margin-bottom: sp(10);
+    }
+    
+    
+     .fa-user{
+        margin-bottom: sp(10);
+    }
+    
+    .item-footer .f-service .ico-heart.active {
+    }
+    
+    .fa-shopping-cart {
+        margin-top: sp(12);
+        margin-left: sp(-25);
+        // width: 10%;
+        float: left;
+        // height: 100%;
+        background-size: 50%;
+    }
+    
+    .item-footer .f-service.f-cart {
+        width: 20%;
+        height: sp(48);
+        position: relative;
+        border: sp(1) solid #009d42;
+        border-radius: sp(10);
+        margin-right: 3%;
+        margin-left: 2%
+    }
+
+    .item-footer .f-service.f-cart .cart-num {
+        width: sp(32);
+        height: sp(32);
+        display: block;
+        background-color: #f60;
+        border-radius: 50%;
+        text-align: center;
+        font-size: sp(14);
+        color: #fff;
+        line-height: sp(32);
+        position: absolute;
+        right: 20%;
+        top: sp(10)
+    }
+    
+    .item-footer .f-btn-add {
+        width: 45%;
+        height: sp(48);
+        overflow: hidden;
+        float: left;
+        background-color: #009d42;
+        border: 0;
+        text-align: center;
+        font-size: sp(17);
+        color: #fff;
+        line-height: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: sp(5)
+    }
+
 }
 
-.item-footer .f-service {
-    width: 13%;
-    height: sp(40);
-    overflow: hidden;
-    float: left;
-    color: rgb(87, 79, 79);
-    line-height: sp(1);
-    font-size: sp(10);
-    text-align: center
-}
+// 购物车页面
+.constent_wandering{
+    .am-list-item img{
+        width: 77px;
+        height: 83px;
+    }
 
-.item-footer .f-service.f-heart {
-    margin-right: 3%
-}
-
-.svg-inline--fa {
-    font-size: sp(16);
-    width: 100%;
-    height: sp(30);
-    display: inline-block;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 35%;
-    margin-bottom: sp(-2)
-}
-
-.fa-home {
-    margin-bottom: sp(2);
-}
-
-
- .fa-user{
-    margin-bottom: sp(2);
-}
-
-.item-footer .f-service .ico-heart.active {
-}
-
-.fa-shopping-cart {
-    margin-left: sp(8);
-    width: 70%;
-    float: left;
-    height: 100%;
-    background-size: 50%;
-}
-
-.item-footer .f-service.f-cart {
-    width: 20%;
-    height: sp(48);
-    position: relative;
-    border: sp(1) solid #009d42;
-    border-radius: sp(10);
-    margin-right: 3%;
-    margin-left: 2%
-}
-
-.item-footer .f-service.f-cart .cart-num {
-    width: sp(32);
-    height: sp(32);
-    display: block;
-    background-color: #f60;
-    border-radius: 50%;
-    text-align: center;
-    font-size: sp(14);
-    color: #fff;
-    line-height: sp(32);
-    position: absolute;
-    right: 20%;
-    top: sp(10)
-}
-
-.item-footer .f-btn-add {
-    width: 45%;
-    height: sp(48);
-    overflow: hidden;
-    float: left;
-    background-color: #009d42;
-    border: 0;
-    text-align: center;
-    font-size: sp(17);
-    color: #fff;
-    line-height: 100%;
-    margin: 0;
-    padding: 0;
-    border-radius: sp(5)
 }

@@ -2,14 +2,14 @@ import React,{Component} from 'react';
 import { Tabs} from 'antd-mobile';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import New from './new'
-import '../../../css/header.css';
+import {Home} from './home'
 class Header extends Component{
     constructor(){
         super();
         this.state={
             // 首页tab选项
             tabs:[
-                {"ItemIndexId":'/',"title":"首页","Code":"Home","Uri":null},
+                {"ItemIndexId":'',"title":"首页","Code":"Home","Uri":null},
                 {"ItemIndexId":'/new',"title":"新品","Code":"newArrival","Uri":null},
                 {"ItemIndexId":'/2860',"title":"家务","Code":"mainCategory","Uri":null},
                 {"ItemIndexId":'/2859',"title":"下厨","Code":"mainCategory","Uri":null},
@@ -29,7 +29,6 @@ class Header extends Component{
         this.setState({
             headerTab:idx
         })
-        // console.log(this.state.headerTab)
         //改变url地址
         let {history,match} = this.props;
         let url = match.path + tab.ItemIndexId
@@ -75,12 +74,9 @@ class Header extends Component{
                 
                 {/* {console.log(match)} */}
                 {/* <Route path={match.url} component={/} /> */}
-                <Redirect from=""  to="/" exact/>
+                {/* <Redirect from=""  to="/" exact/> */}
                 <Route path={match.url+'/new'}  component={New} />
-                <Route path={match.url+"/2860"} render={
-                    ()=><strong>我的家务页面</strong>
-                    
-                    } />
+                <Route path={match.url+"/2860"} render={()=><strong>我的家务页面</strong>} />
                 <Route path={match.url+"/2859"} render={()=><div className='wrapShelf'>
                     <div className="subcattitle">最近一周新品</div>
                     <div className='shelfItem'>
@@ -108,9 +104,8 @@ class Header extends Component{
                 <Route path={match.url+"/2862"} render={()=><strong>我的床品页面</strong>} />
                 <Route path={match.url+"/3526"} render={()=><strong>我的洗漱沐浴页面</strong>} />
                 <Route path={match.url+"/last"} render={()=><strong>我的了解Life页面</strong>} />
-                <Route path="/404"  render={()=><strong>我的页面</strong>} />
-                {/* <Redirect from="/"  to="/Header" exact/> */}
-                {/* <Redirect  to="/404" /> */}
+                <Route path={match.url+''}  component={Home} />
+                {/* <Route path="/404"  render={()=><strong>你访问的页面不存在</strong>} /> */}
             </Switch>
         </div>
     }
