@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { Tabs} from 'antd-mobile';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import New from './new'
+import Channel from './channel'
 import {Home} from './home'
 class Header extends Component{
     constructor(){
@@ -39,12 +40,16 @@ class Header extends Component{
         history.push(url)
     }
     componentWillMount(){
-        let hash=window.location.hash.slice(1);
+        let hash=window.location.hash.slice(6);
         //找出对应索引值
+        // console.log(hash)
         let headerTab=0
-        
+        // let sleicehash=this.props.match.path
+
         this.state.tabs.some((item,idx)=>{
+            // console.log(item)
             if(item.ItemIndexId===hash){
+                // console.log(idx)
                 headerTab=idx
             }
             return item.headerTab===hash
@@ -59,7 +64,7 @@ class Header extends Component{
         return <div className="headerContent">
             <div  className="wrapHeard">
             <div className="headerIco"></div> 
-            <a  href="#/all">
+            <a  href="#/Products">
             <span className="headTypeimg"></span>
             </a>
             </div>
@@ -76,7 +81,7 @@ class Header extends Component{
                 {/* <Route path={match.url} component={/} /> */}
                 {/* <Redirect from=""  to="/" exact/> */}
                 <Route path={match.url+'/new'}  component={New} />
-                <Route path={match.url+"/2860"} render={()=><strong>我的家务页面</strong>} />
+                <Route path={match.url+"/2860"} component={Channel} />
                 <Route path={match.url+"/2859"} render={()=><div className='wrapShelf'>
                     <div className="subcattitle">最近一周新品</div>
                     <div className='shelfItem'>

@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
 import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
 import axios from 'axios';
-class New extends Component{
+class Channel extends Component{
     constructor(){
         super();
         this.state={
@@ -13,7 +13,7 @@ class New extends Component{
         // http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid=2860&filter=2877&sort=2&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true
         axios.get("/lifevone/1.0/v_h5_5.1.2_33/Categories/Category", {
             params: {
-                itemindexid:0,
+                itemindexid:2860,
                 filter:3453,
                 sort:2,
                 o:'http%3A%2F%2Fm.lifevc.com',
@@ -23,11 +23,11 @@ class New extends Component{
           .then(res => {
             //   console.log(res);
             let data = res.data.InnerData
-            // console.log(data)
+            console.log(data)
             this.setState({
 				newlist:data.CEORecommends,
             });
-            // console.log(this.state.newlist)
+            console.log(this.state.newlist)
           })
     }
     newslistclick(data,item){
@@ -69,6 +69,6 @@ class New extends Component{
 </div>
 }
 }
-New = withRouter(New);
+// Channel = withRouter(Channel);
 
-export default New;
+export default Channel;
