@@ -4,6 +4,11 @@ import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import New from './new'
 import Channel from './channel'
 import {Home} from './home'
+import kitchen from './kitchen'
+import Life from './Life'
+import jiajufu from './jiajufu'
+import chuangpin from './chuangpin'
+import xisumuyu from './xisumuyu'
 class Header extends Component{
     constructor(){
         super();
@@ -82,33 +87,12 @@ class Header extends Component{
                 {/* <Redirect from=""  to="/" exact/> */}
                 <Route path={match.url+'/new'}  component={New} />
                 <Route path={match.url+"/2860"} component={Channel} />
-                <Route path={match.url+"/2859"} render={()=><div className='wrapShelf'>
-                    <div className="subcattitle">最近一周新品</div>
-                    <div className='shelfItem'>
-                        <a className='itempicig'><img  src="http://i.lifevccdn.com/upload/AppItemInfoImage/293dc63f3df84fc082e038364c2db21c_d1242x0.jpg" lazy="loaded" /></a>
-                        <div className='itemPanel'>
-                            <div  className="titleclearFix">
-                            不锈钢双层多用锅
-                            </div>
-                            <div  className="itemprice">
-                                <div  className="pricecont">
-                                <span  className="act-tag" ></span> 
-                                <span>￥</span> 
-                                <span>129</span>&nbsp;
-                                <span className="originalPrice"></span> 
-                                <span  className="promoLable">新</span>
-                                </div> 
-                                <div className="itemComment">评论：0</div>
-                            </div>
-                        </div>
-                    </div>
-                <strong>我的下厨页面</strong>
-                </div>} />
-                <Route path={match.url+"/2861"} render={()=><strong>我的生活页面</strong>} />
-                <Route path={match.url+"/2865"} render={()=><strong>我的家居服页面</strong>} />
-                <Route path={match.url+"/2862"} render={()=><strong>我的床品页面</strong>} />
-                <Route path={match.url+"/3526"} render={()=><strong>我的洗漱沐浴页面</strong>} />
-                <Route path={match.url+"/last"} render={()=><strong>我的了解Life页面</strong>} />
+                <Route path={match.url+"/2859"} component={kitchen} />
+                <Route path={match.url+"/2861"} component={Life} />
+                <Route path={match.url+"/2865"} component={jiajufu} />
+                <Route path={match.url+"/2862"} component={chuangpin} />
+                <Route path={match.url+"/3526"} component={xisumuyu} />
+                <Route path={match.url+"/last"} render={()=><strong>我们的委托生产供应商，给欧美客户的外贸家居订单，产品质量瑕疵率标准，通常在1.5%左右，但我们对委托生产商的质量要求，是0.5%！而在过去一年的时间里，我们的产品，因为质量瑕疵的退货率，低至0.3% —— 即每售出100件商品，只有0.3件产品，会因为质量瑕疵而退货。我们像捍卫我们生命一样，在捍卫我们的产品质量。</strong>} />
                 <Route path={match.url+''}  component={Home} />
                 {/* <Route path="/404"  render={()=><strong>你访问的页面不存在</strong>} /> */}
             </Switch>

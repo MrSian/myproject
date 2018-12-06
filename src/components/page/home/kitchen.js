@@ -2,12 +2,12 @@ import React,{Component} from 'react';
 import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
 import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
 import axios from 'axios';
-class Channel extends Component{
+class kitchen extends Component{
     constructor(){
         super();
         this.state={
-            channelimg:[],
-            channellist:[],
+            kitchenimg:[],
+            kitchenlist:[],
             channeheader:{},
             channetitle:'',
 
@@ -28,7 +28,7 @@ class Channel extends Component{
             let data = res.data.InnerData
             console.log(data)
             this.setState({
-                channellist:data.CEORecommends,
+                kitchenlist:data.CEORecommends,
                 channeheader:data.DesignerMessageImg,
                 channetitle:data.CEORecommendTitle.Text,
             });
@@ -40,15 +40,16 @@ class Channel extends Component{
             }
           })
           .then(res => {
-            let data = res.data.InnerData[0];
+            let data = res.data.InnerData[1];
             this.setState({
-				channelimg:data.Children,
+				kitchenimg:data.Children,
             });
             console.log(this.state.channetitle)
           })
     }
     
-    channellistclick(data,item){
+    kitchenlistclick(data,item){
+        //获取history
         let {history} = this.props;
         history.push({
             pathname:'/Detils/'+data.ItemInfoId,
@@ -56,11 +57,11 @@ class Channel extends Component{
         });
     }
     render(){
-    let {channelimg}=this.state
+    let {kitchenimg}=this.state
     return <div className='wrapShelf'>
     <div className="subcattitle"> 
         <Grid
-        data={channelimg} 
+        data={kitchenimg} 
         columnNum={4} 
         activeClassName="active" 
         itemStyle={{height:'120px'}}
@@ -72,29 +73,29 @@ class Channel extends Component{
                 </li>
             )
         }}
-        onClick={this.handlerGotochannel}
+        onClick={this.handlerGotokitchen}
         />
         <div className="channellistheaderimg"><img src={'http://i.lifevccdn.com'+this.state.channeheader} /></div>
         <div className="subcat-title">{this.state.channetitle}</div>
     </div>
-    {this.state.channellist.map((channel,idx) => (
+    {this.state.kitchenlist.map((kitchen,idx) => (
         <div className='shelfItem'
         key={idx}
         >
-        <a className='itempicig'><img onClick={this.channellistclick.bind(this, channel)}  src={'http://i.lifevccdn.com'+channel.ImageUrl} lazy="loaded" /></a>
+        <a className='itempicig'><img onClick={this.kitchenlistclick.bind(this, kitchen)}  src={'http://i.lifevccdn.com'+kitchen.ImageUrl} lazy="loaded" /></a>
         <div className='itemPanel'>
             <div  className="titleclearFix">
-            {channel.Name}
+            {kitchen.Name}
             </div>
             <div  className="itemprice">
                 <div  className="pricecont">
                 <span  className="act-tag" ></span> 
                 <span>￥</span> 
-                <span>{channel.SalePrice}</span>&nbsp;
+                <span>{kitchen.SalePrice}</span>&nbsp;
                 <span className="originalPrice"></span> 
                 <span  className="promoLable">新</span>
                 </div> 
-                <div className="itemComment">评论：{channel.CommentCount}</div>
+                <div className="itemComment">评论：{kitchen.CommentCount}</div>
             </div>
         </div>
     </div>
@@ -102,6 +103,6 @@ class Channel extends Component{
 </div>
 }
 }
-// Channel = withRouter(Channel);
+// kitchen = withRouter(kitchen);
 
-export default Channel;
+export default kitchen;

@@ -9,6 +9,7 @@ import '../sass/page.scss'
 // 底部 footer
 import {Home} from './page/home/lifeVC'  //首页
 import {Products} from './page/products/products' //全部产品
+import {Paging} from './page/products/paging' 
 import {Wandering} from './page/Wandering/Wandering' //闲逛页面
 import {ShoppingCart} from './page/ShoppingCart/ShoppingCart'  //购物车
 import {Account} from './page/account/account'  //账户中心
@@ -122,6 +123,7 @@ class App extends Component{
         <Switch>   
             <Route path="/home" component={Home} />
             <Route path="/Products" component={Products} />
+            <Route path="/paging/:id" component={Paging} />
             <Route path="/Wandering" component={Wandering} />
             <Route path="/Detils/:id" component={Detils} />
             <Route path="/ShoppingCart" component={ShoppingCart} />

@@ -84,8 +84,8 @@ body {
 
 .header-title {
     margin: 0 auto;
-    line-height: sp(48);
-    font-size: sp(20);
+    line-height: sp(57);
+    font-size: sp(22);
     text-align: center;
     color: #fff;
     width: 80%;
@@ -137,11 +137,13 @@ body {
     position: relative;
     margin-bottom: 1rem;
 }
+
 //头部样式
-.wrapHeard{
+.wrapHeard {
     width: auto;
     height: 48px;
     background: #89be48;
+
     .headerIco {
         display: block;
         width: 100%;
@@ -150,6 +152,7 @@ body {
         background-size: 50%;
         background-position: 50%;
     }
+
     .headTypeimg {
         width: 44PX;
         height: 44PX;
@@ -165,14 +168,17 @@ body {
         background-position: 50%;
     }
 }
+
 // 首页样式
 .imgWrap {
     /* height: 537px; */
     background: #eee url(../image/homepage1.png) no-repeat 50%;
 }
-.sliderimg{
+
+.sliderimg {
     position: relative;
-    img{
+
+    img {
         width: 100%;
     }
 }
@@ -259,6 +265,12 @@ body {
                 }
             }
         }
+    }
+}
+//paging页面
+.paging{
+    .pricecont{
+        min-width: 18% !important;
     }
 }
 
@@ -521,10 +533,11 @@ i {
 
 
 // 添加购物车样式
-.getshopping{
+.getshopping {
     min-width: sp(320);
     max-width: sp(640);
-    .item-footer { 
+
+    .item-footer {
         width: 100%;
         min-width: sp(320);
         max-width: sp(640);
@@ -532,7 +545,7 @@ i {
         background: #89be48;
         padding: sp(4) 0 sp(4)
     }
-    
+
     .item-footer .f-service {
         width: 13%;
         height: sp(40);
@@ -543,11 +556,11 @@ i {
         font-size: sp(10);
         text-align: center
     }
-    
+
     .item-footer .f-service.f-heart {
         margin-right: 3%
     }
-    
+
     .svg-inline--fa {
         font-size: sp(20) !important;
         width: 100%;
@@ -558,19 +571,18 @@ i {
         background-repeat: no-repeat;
         background-size: 35%;
     }
-    
+
     .fa-home {
         margin-bottom: sp(10);
     }
-    
-    
-     .fa-user{
+
+
+    .fa-user {
         margin-bottom: sp(10);
     }
-    
-    .item-footer .f-service .ico-heart.active {
-    }
-    
+
+    .item-footer .f-service .ico-heart.active {}
+
     .fa-shopping-cart {
         margin-top: sp(12);
         margin-left: sp(-25);
@@ -579,7 +591,7 @@ i {
         // height: 100%;
         background-size: 50%;
     }
-    
+
     .item-footer .f-service.f-cart {
         width: 20%;
         height: sp(48);
@@ -604,7 +616,7 @@ i {
         right: 20%;
         top: sp(10)
     }
-    
+
     .item-footer .f-btn-add {
         width: 45%;
         height: sp(48);
@@ -624,10 +636,28 @@ i {
 }
 
 // 购物车页面
-.constent_wandering{
-    .am-list-item img{
+.constent_wandering {
+    .am-list-item img {
         width: 77px;
         height: 83px;
     }
 
+}
+// 家务页面
+.channellistheaderimg{
+    margin-top: sp(15);
+    width: 100%;
+    height: sp(250);
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.subcat-title {
+    max-width: 96%;
+    text-align: center;
+    font-size: sp(25);
+    color: #000;
+    line-height: sp(60);
+    margin: 0 auto sp(0);
 }

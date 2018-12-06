@@ -15,7 +15,7 @@ class Products extends Component{
             produls:[],
         }
 
-        this.handlerGotoDetails = this.handlerGotoDetails.bind(this);
+        // this.handlerGotoDetails = this.handlerGotoDetails.bind(this);
     }
     componentWillMount(){
         // http://m.lifevc.com/h5/#/channelsub/2860/2877
@@ -29,41 +29,28 @@ class Products extends Component{
           })
           .then(res => {
             let data = res.data.InnerData;
-            // let Duck=res.data.InnerData;
-            // let Dlist=[];
-            // console.log(data)
+            console.log(data)
             this.setState({
 				produls:data,
 			});
           })
-		axios.get('/jxapi/m_v1/promote/qgajax.do',{
-			params:{
-				t:Date.now(),
-				pagenum:1,
-				tabnum:1
-			}
-		}).then(res=>{
-			let data = res.data;
-			
-			this.setState({
-				ad:data.killProList.slice(0,4),
-				goodslist:data.killProList.slice(4)
-			});
-		});
     }
-    handlerGotoDetails(goods){
+    handlerGotoDetails(IDgoods,goods){
         //获取history
-        console.log(goods)
+        // console.log(IDgoods)
+        // console.log(goods)
         let {history} = this.props;  
-        console.log(history);
+        // console.log(history);
         // /home/2860/2877
         history.push({
-            pathname:'/home/2860/'+goods.ItemIndexId,
-            state:goods
+            pathname:'/paging/'+goods.ItemIndexId,
+            state:goods,
+            IDstate:IDgoods,
         });
     }
     render(){
         let productnews=this.state.produls;
+        // let ItemIndexId=productnews.ItemIndexId;
         // console.log(productnews);
         return <div>
             <div id="topbar" className="header" >
@@ -99,7 +86,7 @@ class Products extends Component{
                                     </li>
                                 )
                             }}
-                            onClick={this.handlerGotoDetails}
+                            onClick={this.handlerGotoDetails.bind(this,productdest.ItemIndexId)}
                             />
                         </ul>
                     </div>

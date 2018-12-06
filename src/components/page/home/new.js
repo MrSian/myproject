@@ -10,22 +10,20 @@ class New extends Component{
         }
     }
     componentWillMount(){
-        // http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid=2860&filter=2877&sort=2&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true
-        axios.get("/lifevone/1.0/v_h5_5.1.2_33/Categories/Category", {
+        // http://app.lifevc.com/1.0/v_h5_5.1.2_33/contents/newarrival?
+        axios.get("/lifevone/1.0/v_h5_5.1.2_33/contents/newarrival", {
             params: {
-                itemindexid:0,
-                filter:3453,
-                sort:2,
+                code:'weekly',
                 o:'http%3A%2F%2Fm.lifevc.com',
-                NewCartVersion:true,
+                NewCartVersion:true
             }
           })
           .then(res => {
-            //   console.log(res);
+              console.log(res);
             let data = res.data.InnerData
             // console.log(data)
             this.setState({
-				newlist:data.CEORecommends,
+				newlist:data,
             });
             // console.log(this.state.newlist)
           })

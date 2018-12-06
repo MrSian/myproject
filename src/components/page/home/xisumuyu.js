@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
 import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
 import axios from 'axios';
-class Channel extends Component{
+class xisumuyu extends Component{
     constructor(){
         super();
         this.state={
@@ -40,7 +40,7 @@ class Channel extends Component{
             }
           })
           .then(res => {
-            let data = res.data.InnerData[0];
+            let data = res.data.InnerData[5];
             this.setState({
 				channelimg:data.Children,
             });
@@ -67,6 +67,7 @@ class Channel extends Component{
         renderItem={(goods,idx)=>{
             return(
                 <li key={idx}>
+                        {/* productli.Icon */}
                             <img style={{height:'80px'}} src={'http://i.lifevccdn.com'+goods.Icon} />
                             <h6 className='activespan'>{goods.Name}</h6>
                 </li>
@@ -104,4 +105,4 @@ class Channel extends Component{
 }
 // Channel = withRouter(Channel);
 
-export default Channel;
+export default xisumuyu;
