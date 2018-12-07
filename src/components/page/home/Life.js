@@ -25,9 +25,7 @@ class Life extends Component{
             }
           })
           .then(res => {
-            //CEORecommendTitle.Text
             let data = res.data.InnerData
-            console.log(data)
             this.setState({
                 Lifelist:data.CEORecommends,
                 channeheader:data.DesignerMessageImg,
@@ -45,10 +43,13 @@ class Life extends Component{
             this.setState({
 				Lifeimg:data.Children,
             });
-            console.log(this.state.channetitle)
           })
     }
-    
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     Lifelistclick(data,item){
         let {history} = this.props;
         history.push({

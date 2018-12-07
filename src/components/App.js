@@ -6,6 +6,7 @@ import { TabBar } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css'
 import '../css/page.css';
 import '../sass/page.scss'
+// import lazy from './Lazyload.js'
 // 底部 footer
 import {Home} from './page/home/lifeVC'  //首页
 import {Products} from './page/products/products' //全部产品
@@ -103,7 +104,6 @@ class App extends Component{
         // console.log(this.props)
     }
     componentWillReceiveProps (nextProps) {
-        // console.log(nextProps)
         let hash=nextProps.location.pathname
         let currentTab=0
         this.state.tabs.some((item,idx)=>{

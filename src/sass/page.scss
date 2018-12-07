@@ -267,9 +267,10 @@ body {
         }
     }
 }
+
 //paging页面
-.paging{
-    .pricecont{
+.paging {
+    .pricecont {
         min-width: 18% !important;
     }
 }
@@ -643,16 +644,19 @@ i {
     }
 
 }
+
 // 家务页面
-.channellistheaderimg{
+.channellistheaderimg {
     margin-top: sp(15);
     width: 100%;
     height: sp(250);
-    img{
+
+    img {
         width: 100%;
         height: 100%;
     }
 }
+
 .subcat-title {
     max-width: 96%;
     text-align: center;
@@ -660,4 +664,61 @@ i {
     color: #000;
     line-height: sp(60);
     margin: 0 auto sp(0);
+}
+
+// 账户中心
+.accountpass {
+    color: #585858;
+    text-align: center;
+    width: sp(150);
+    margin: 0 auto;
+    h3{
+        margin: sp(10) sp(0);
+        font-family: '楷体'
+    }
+    .caccountp {
+        // margin: 0 sp(15);
+        height: sp(40);
+        width: 100%;
+        border-radius: sp(20);
+        text-align: center;
+        color: #009c42;
+        border: 1px solid #009d42;
+
+        span {
+            display: inline-block;
+            margin: sp(10) sp(10);
+        }
+    }
+}
+
+.accountuser {
+    height: sp(108);
+}
+
+.accountone {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    margin: 0 auto;
+
+    li {
+        height: sp(60);
+        width: 33%;
+        float: left;
+        line-height: sp(60);
+        text-align: center;
+    }
+}
+
+.accounttwo {
+    margin-top: sp(20);
+}
+
+.accounttwo li {
+    height: sp(60);
+    background: #83b842;
+    line-height: sp(60);
+    border-bottom: sp(1) solid #ccc;
 }

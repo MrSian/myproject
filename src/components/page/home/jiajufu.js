@@ -47,7 +47,11 @@ class jiajufu extends Component{
             console.log(this.state.channetitle)
           })
     }
-    
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     channellistclick(data,item){
         //获取history
         let {history} = this.props;

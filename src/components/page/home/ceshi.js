@@ -147,3 +147,4 @@ class Detils  extends Component{
     }
 }
 export {Detils}
+

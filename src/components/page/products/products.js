@@ -13,12 +13,12 @@ class Products extends Component{
             //列表
             goodslist:[],
             produls:[],
+            stringlist:[],
         }
 
         // this.handlerGotoDetails = this.handlerGotoDetails.bind(this);
     }
     componentWillMount(){
-        // http://m.lifevc.com/h5/#/channelsub/2860/2877
         //http://m.lifevc.com/h5/#/channelsub/2860/2884
         // 获取tap商品
         axios.get("/lifevone/1.0/v_h5_5.1.2_33/categories/allCategory", {
@@ -48,6 +48,23 @@ class Products extends Component{
             IDstate:IDgoods,
         });
     }
+    Submitproucts(obj){
+        // http://app.lifevc.com/1.0/v_h5_5.1.2_33/contents/SearchAutoSuggest?keywords=jia&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true
+        axios.get("/lifevtwo/1.0/v_h5_5.1.2_33/contents/SearchAutoSuggest", {
+            params: {
+                keywords:obj,
+                o:'http%3A%2F%2Fm.lifevc.com',
+                NewCartVersion:true,
+            }
+          })
+          .then(res => {
+            let data = res.data.InnerData;
+            console.log(data.split('|'))
+            this.setState({
+				stringlist:data,
+			});
+        })
+    }
     render(){
         let productnews=this.state.produls;
         // let ItemIndexId=productnews.ItemIndexId;
@@ -59,7 +76,13 @@ class Products extends Component{
                 </div> 
                 <div  id="wrap" className="search-panel">
                     <div  id="search-bar">
-                        <SearchBar className="searchinput" placeholder="搜索商品" setFocus="focusObj"></SearchBar>
+                        <SearchBar 
+                        className="searchinput" 
+                        placeholder="搜索商品" 
+                        setFocus="focusObj"
+                        onChange={this.Submitproucts.bind(this)}
+                        >
+                        </SearchBar>
                     </div>
                 </div> 
             </div>

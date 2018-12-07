@@ -26,7 +26,7 @@ class chuangpin extends Component{
           })
           .then(res => {
             let data = res.data.InnerData
-            console.log(data)
+            // console.log(data)
             this.setState({
                 chuangpinlist:data.CEORecommends,
                 channeheader:data.DesignerMessageImg,
@@ -44,10 +44,14 @@ class chuangpin extends Component{
             this.setState({
 				chuangpinimg:data.Children,
             });
-            console.log(this.state.channetitle)
+            // console.log(this.state.channetitle)
           })
     }
-    
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     chuangpinlistclick(data,item){
         //获取history
         let {history} = this.props;

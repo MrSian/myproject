@@ -27,13 +27,14 @@ class Paging extends Component{
             paginglist:[],
             parameterdata:[],
             parameterIDdata:'',
+            parametertab:1,
         }
+        // this.onTabClickpaging=this.onTabClickpaging.bind(this)
     }
-    componentWillMount(){
-        // let parameterdata=window.location;
-        // console.log(this.props)
+    tick(){
+        this.state.paginglist=[];
         let {state:parameterdata,IDstate:parameterIDdata} = this.props.location;
-        // console.log(parameterdata)
+        // console.log(this.state.parametertab)
         if(parameterdata){
 
             //本地存储
@@ -45,23 +46,52 @@ class Paging extends Component{
             parameterdata = JSON.parse(localStorage.getItem('parameterdata'));
           
         }
-        console.log(parameterdata)
         let datapaging=parameterdata.ItemIndexId;
         axios.get('/lifevtwo/1.0/v_h5_5.1.2_33/Categories/Category',{
             params:{
                 itemindexid:parameterIDdata,
                 filter:datapaging,
-                sort:1,
+                sort:this.state.parametertab,
                 o:'http%3A%2F%2Fm.lifevc.com',
                 NewCartVersion:true
             }
         }).then(res=>{
             let data=res.data.InnerData.GoodsItems
-            console.log(data)
-            this.setState({
-                paginglist:data,
-            })
+            // console.log(data);
+                this.setState({
+                    paginglist:data,
+                })
         })
+    }
+    componentWillMount(){
+        this.tick()
+    }
+    shouldComponentUpdate(nextProps,nextState){
+        console.log(nextState)
+        if(this.state.parametertab==nextState.parametertab){
+            return true
+        }
+        // this.tick()
+    }
+    onTabClickpaging( index,tab){
+        // console.log(tab)
+        // console.log(index)
+        // let {history} = this.props;
+        // if(index==tab.icon){
+        //     return false;
+        // }
+        // history.push({
+        //     state:tab.icon,
+        // });
+        this.setState({
+            parametertab:tab.icon
+        })
+        // console.log(this.state.parametertab)
+    }
+    componentWillUnMount = () => {
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
     render(){
         let {paginglist,tabs}=this.state
@@ -72,16 +102,16 @@ class Paging extends Component{
             </div>
         </div>
         <Tabs tabs={tabs}
-        initialPage={1}
+        initialPage={0}
         onChange={(tab, index) => { console.log('onChange', index, tab); }}
-        onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+        onTabClick={this.onTabClickpaging.bind(this, this.state.parametertab)}
         >
        <div className='wrapShelf'>
             <Grid
             data={paginglist} 
             columnNum={1} 
             activeClassName="active" 
-            itemStyle={{height:'272px'}}
+            itemStyle={{height:'310px'}}
             renderItem={(list,idx)=>{
                 return(
                     <div className='shelfItem'

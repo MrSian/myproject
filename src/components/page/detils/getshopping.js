@@ -24,8 +24,8 @@ class  getshopping extends Component{
         console.log(this)
     }
     render(){
-    return <div className="getshopping">
-        <footer  className="item-footer" style={{position: 'fixed', bottom: '0px'}}>
+    return <div className="getshopping" style={{position: 'fixed', bottom: '0px'}}>
+        <footer  className="item-footer" >
             <div  className="f-service f-kefu">
             <FontAwesomeIcon icon={faUser}/>
             <br/>

@@ -30,14 +30,14 @@ class ShoppingCart extends Component{
 					this.props.goodslist.map((goods,idx)=>{
                         let qty = goods.qty;
 						return <Item
-							key={goods.proId}x
+							key={idx}
 							thumb={'http://i.lifevccdn.com'+goods.ImageUrl}
-							extra={<Icon type="cross" onClick={this.props.remove.bind(this,goods.proId)}/>}
+							extra={<Icon type="cross" onClick={this.props.remove.bind(this,goods.ItemInfoID)}/>}
 						>
-							{goods.proName}
+							{goods.Name}
 							<Brief>{goods.slogan}</Brief>
-							<Brief>价格：<span className="price">{goods.proPrice}</span></Brief>
-							<Stepper showNumber size="small" value={qty} onChange={this.props.changeQty.bind(this,goods.proId,qty)} />
+							<Brief>价格：<span className="price">{goods.SalePrice}</span></Brief>
+							<Stepper showNumber size="small" value={qty} onChange={this.props.changeQty.bind(this,goods.ItemInfoID,qty)} />
 						</Item>
 					})
 				}
@@ -53,6 +53,7 @@ let mapStateToProps = state=>{
 let mapDispatchToProps = dispatch=>{
 	return {
 		remove(proId){
+			console.log(proId);
 			dispatch(cartAction.remove(proId))
 		},
 		changeQty(proId,qty){

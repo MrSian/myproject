@@ -26,7 +26,6 @@ class xisumuyu extends Component{
           })
           .then(res => {
             let data = res.data.InnerData
-            console.log(data)
             this.setState({
                 channellist:data.CEORecommends,
                 channeheader:data.DesignerMessageImg,
@@ -44,10 +43,14 @@ class xisumuyu extends Component{
             this.setState({
 				channelimg:data.Children,
             });
-            console.log(this.state.channetitle)
           })
     }
-    
+    componentWillUnmount = () => {
+        // console.log('结束了')
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     channellistclick(data,item){
         let {history} = this.props;
         history.push({

@@ -19,25 +19,25 @@ class New extends Component{
             }
           })
           .then(res => {
-              console.log(res);
             let data = res.data.InnerData
             // console.log(data)
             this.setState({
 				newlist:data,
             });
-            // console.log(this.state.newlist)
           })
     }
     newslistclick(data,item){
         //获取history
-        // console.log(data)
-        // console.log(item)
         let {history} = this.props;
-        // console.log(history);
         history.push({
             pathname:'/Detils/'+data.ItemInfoId,
             state:data
         });
+    }
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
     }
     render(){
     return <div className='wrapShelf'>

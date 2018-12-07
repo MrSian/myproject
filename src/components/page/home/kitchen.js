@@ -26,7 +26,6 @@ class kitchen extends Component{
           })
           .then(res => {
             let data = res.data.InnerData
-            console.log(data)
             this.setState({
                 kitchenlist:data.CEORecommends,
                 channeheader:data.DesignerMessageImg,
@@ -44,10 +43,13 @@ class kitchen extends Component{
             this.setState({
 				kitchenimg:data.Children,
             });
-            console.log(this.state.channetitle)
           })
     }
-    
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     kitchenlistclick(data,item){
         //获取history
         let {history} = this.props;

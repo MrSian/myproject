@@ -3,6 +3,8 @@ let initState = {
     goodslist:[]
 }
 let commonReducer = (state=initState,action)=>{
+    // console.log(action)
+    // console.log(state)
     switch(action.type){
         //添加商品
         case 'ADD_TO_CART':
@@ -14,14 +16,14 @@ let commonReducer = (state=initState,action)=>{
         case 'REMOVE_FROM_CART':
             return {
                 ...state,
-                goodslist:state.goodslist.filter(goods=>goods.proId!==action.payload)
+                goodslist:state.goodslist.filter(goods=>goods.ItemInfoID!==action.payload)
             }
         //修改商品数量
         case 'CHANGE_GOODS_QTY':
             return {
                 ...state,
                 goodslist:state.goodslist.filter(goods=>{
-                    if(goods.proId === action.payload.proId){
+                    if(goods.ItemInfoID === action.payload.proId){
                         goods.qty = action.payload.qty
                     }
 

@@ -10,8 +10,9 @@ import {faHome, faShoppingCart,faUser} from '@fortawesome/free-solid-svg-icons' 
 library.add(faHome, faShoppingCart,faUser)
 class Detils  extends Component{
     // 这是主页面
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        console.log(this.props);
         this.state = {
             Detilslist:[],
             Detilsheaderimg:[],
@@ -22,9 +23,12 @@ class Detils  extends Component{
             props:[],
             vals:[],
             dataInfoID:[],
+            datanumber:this.props.cartlist.length,
         }
     }
-    componentWillMount(){
+    tick() {
+        // 隐藏底部菜单
+        this.props.changeTabbarStatus(false);
         // console.log('goodsprops:',this.props)
         // 判断是否传入商品信息
         let {state:Detilslist} = this.props.location;
@@ -71,30 +75,31 @@ class Detils  extends Component{
                 props,
                 dataInfoID,
             });
-            // 隐藏底部菜单
-            this.props.changeTabbarStatus(false);
         })
+      }  
+    componentWillMount(){
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+        // console.log('结束了')
+        this.props.changeTabbarStatus(true);
     }
      // 添加到购物车
-     handlerAddToCart(Detilslist){
-        let goods=Detilslist;
-        console.log(goods);
+     handlerAddToCart(goods){
+        // let goods=Detilslist;
+        // console.log(goods);
         let has = this.props.cartlist.filter(item=>{
-            return item.proId == goods.proId
+            return item.ItemInfoID == goods.proId
         });
+        console.log(has.length);
+        if(has.length){
+            // 存在
+            this.props.changeQty(goods.proId,++goods.qty);
+        }else{
             goods.qty = 1;
             this.props.addToCart(goods);
-        // if(has.length){
-        //     // 存在
-        //     this.props.changeQty(goods.proId,++goods.qty);
-        // }else{
-        //     goods.qty = 1;
-        //     this.props.addToCart(goods);
-        // }
-       
-    }
-    componentWillUnmount(){
-        this.props.changeTabbarStatus(true);
+        }
     }
     render(){
 
@@ -199,7 +204,7 @@ class Detils  extends Component{
             </a> <i className={"fal fa-user-astronaut"}></i>
             <a  target="_self" className="f-service f-cart">
             <FontAwesomeIcon icon={faShoppingCart}/>
-                <span  className="cart-num">8</span>
+                <span  className="cart-num">{this.props.cartQty}</span>
             </a> 
             <button onClick={this.handlerAddToCart.bind(this,dataInfoID)} className="f-btn-add">加入购物车</button> 
         </footer>

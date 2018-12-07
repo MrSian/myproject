@@ -15,6 +15,7 @@ class Channel extends Component{
     }
     componentWillMount(){
         let hash=window.location.hash.slice(7);
+        this._isMounted = true;
         axios.get("/lifevone/1.0/v_h5_5.1.2_33/Categories/Category", {
             params: {
                 itemindexid:hash,
@@ -26,12 +27,14 @@ class Channel extends Component{
           })
           .then(res => {
             let data = res.data.InnerData
-            console.log(data)
-            this.setState({
-                channellist:data.CEORecommends,
-                channeheader:data.DesignerMessageImg,
-                channetitle:data.CEORecommendTitle.Text,
-            });
+            // console.log(data)
+            if(this._isMounted){
+                this.setState({
+                    channellist:data.CEORecommends,
+                    channeheader:data.DesignerMessageImg,
+                    channetitle:data.CEORecommendTitle.Text,
+                });
+            }
           })
           axios.get("/lifevone/1.0/v_h5_5.1.2_33/categories/allCategory", {
             params: {
@@ -41,13 +44,23 @@ class Channel extends Component{
           })
           .then(res => {
             let data = res.data.InnerData[0];
-            this.setState({
-				channelimg:data.Children,
-            });
-            console.log(this.state.channetitle)
+            if(this._isMounted){
+                this.setState({
+                    channelimg:data.Children,
+                });
+            }
+            // console.log(this.state.channetitle)
           })
     }
-    
+    // componentWillUnMount = () => {
+    //     this._isMounted = false;
+    //     console.log(this._isMounted)
+    // }
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
     channellistclick(data,item){
         let {history} = this.props;
         history.push({

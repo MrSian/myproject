@@ -63,7 +63,7 @@ class Home extends Component{
                             <img  useMap={'#planetmap'+idx} height={loods.ImageHeight/2} src={"http://i.lifevccdn.com/"+loods.ImageUrl} />
                             <map name={'planetmap'+idx} id={'planetmap'+idx}>
                             {loods.TouchElem.map((loodis,idx) => (
-                                    <area  href="http://localhost:9002/#/Products" key={idx}  shape="rect" coords={loodis.BeginXP*3+','+loodis.BeginXP*3+','+loodis.EndXP*3+','+loodis.EndYP*3}></area>
+                                    <area  href="http://localhost:9002/#/Products" key={idx}  shape="rect" coords={loodis.BeginXP*2+','+loodis.BeginXP*3+','+loodis.EndXP*4+','+loodis.EndYP*5}></area>
                             ))}
                             </map>
                         </div>
