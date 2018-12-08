@@ -30,6 +30,19 @@ let commonReducer = (state=initState,action)=>{
                     return true;
                 })
             }
+            // 商品尺寸
+            case 'CHANGE_GOODS_SIZE':
+            return {
+                ...state,
+                goodslist:state.goodslist.filter(goods=>{
+                    console.log(goods.ConfigerList)
+                    // if(goods.ItemInfoID === action.payload.proId){
+                        goods.ConfigerList = action.payload.size
+                    // }
+
+                    return true;
+                })
+            }
 
         default:
             return state;

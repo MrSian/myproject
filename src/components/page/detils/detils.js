@@ -12,7 +12,6 @@ class Detils  extends Component{
     // 这是主页面
     constructor(props){
         super(props);
-        console.log(this.props);
         this.state = {
             Detilslist:[],
             Detilsheaderimg:[],
@@ -23,8 +22,10 @@ class Detils  extends Component{
             props:[],
             vals:[],
             dataInfoID:[],
-            datanumber:this.props.cartlist.length,
+            inpValu:0,
         }
+        this.handlerAddincrease=this.handlerAddincrease.bind(this);
+        this.handlerAddreduce=this.handlerAddreduce.bind(this)
     }
     tick() {
         // 隐藏底部菜单
@@ -78,27 +79,35 @@ class Detils  extends Component{
         })
       }  
     componentWillMount(){
-        this.interval = setInterval(() => this.tick(), 1000);
+         this.tick()
     }
     componentWillUnmount() {
         clearInterval(this.interval);
-        // console.log('结束了')
         this.props.changeTabbarStatus(true);
+    }
+    handlerAddincrease(increase){
+        this.setState({
+            inpValu: this.state.inpValu++
+        })
+    }
+    handlerAddreduce(reduce){
+        this.setState({
+            inpValu: this.state.inpValu--
+        })
     }
      // 添加到购物车
      handlerAddToCart(goods){
-        // let goods=Detilslist;
-        // console.log(goods);
         let has = this.props.cartlist.filter(item=>{
-            return item.ItemInfoID == goods.proId
+            return item.ItemInfoID == goods.ItemInfoID
         });
-        console.log(has.length);
+        let size='1111111111'
         if(has.length){
             // 存在
             this.props.changeQty(goods.proId,++goods.qty);
         }else{
             goods.qty = 1;
             this.props.addToCart(goods);
+            this.props.changeSize(goods.proId,size);
         }
     }
     render(){
@@ -163,9 +172,9 @@ class Detils  extends Component{
             <br />
             <div className="GroupAttrsone GroupAttrsfive">
                 <span>数量: </span>
-                <input type="button" value="-"/>
-                <input type="text" value="0"/>
-                <input type="button" value="+"/>
+                <button onClick={this.handlerAddincrease}>-</button>
+                <input  type="text"  defaultValue={this.state.inpValu}/>
+                <button onClick={this.handlerAddreduce}>+</button>
             </div>
             <br />
             <br />
@@ -224,6 +233,9 @@ let mapDispatchToProps = dispatch=>{
         },
         changeQty(proId,qty){
             dispatch(cart.change(proId,qty))
+        },
+        changeSize(proId,size){
+            dispatch(cart.size(proId,size))
         }
     }
 }

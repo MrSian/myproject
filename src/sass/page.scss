@@ -493,7 +493,13 @@ i {
 
     .GroupAttrsfive {
         float: left;
-
+        button{
+            box-sizing: border-box;
+            width: sp(34);
+            height: sp(34);
+            line-height: sp(4);
+            text-align: center;
+        }
         input {
             box-sizing: border-box;
             width: sp(34);

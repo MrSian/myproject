@@ -18,3 +18,9 @@ export function change(proId,qty){
         payload:{proId,qty}
     }
 }
+export function size(proId,size){
+    return {
+        type:'CHANGE_GOODS_SIZE',
+        payload:{proId,size}
+    }
+}
