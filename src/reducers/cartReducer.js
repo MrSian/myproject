@@ -1,11 +1,25 @@
 let initState = {
     // 购物车商品别表
-    goodslist:[]
+    goodslist:[],
+    dellistnumber:0,
 }
 let commonReducer = (state=initState,action)=>{
-    // console.log(action)
-    // console.log(state)
     switch(action.type){
+        // 增加商品数量
+        case 'ADD_TO_JIA':
+            state.dellistnumber++
+            return {
+                ...state,
+                dellistnumber:state.dellistnumber
+            }
+        // 减少商品数量
+        case 'ADD_TO_JIAN':
+        state.dellistnumber--
+            return {
+                ...state,
+                dellistnumber:state.dellistnumber
+            }
+            
         //添加商品
         case 'ADD_TO_CART':
             return {
@@ -35,7 +49,7 @@ let commonReducer = (state=initState,action)=>{
             return {
                 ...state,
                 goodslist:state.goodslist.filter(goods=>{
-                    console.log(goods.ConfigerList)
+                    // console.log(goods.ConfigerList)
                     // if(goods.ItemInfoID === action.payload.proId){
                         goods.ConfigerList = action.payload.size
                     // }

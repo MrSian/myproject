@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
+import {Toast, Tabs, Badge,List,Carousel,Grid } from 'antd-mobile';
 import axios from 'axios';
 import {cart,tabbar} from '../../../actions';
 import {connect} from 'react-redux';
@@ -23,9 +23,9 @@ class Detils  extends Component{
             vals:[],
             dataInfoID:[],
             inpValu:0,
+            dellistnumber:0,
         }
-        this.handlerAddincrease=this.handlerAddincrease.bind(this);
-        this.handlerAddreduce=this.handlerAddreduce.bind(this)
+        this.gohistory = this.gohistory.bind(this); 
     }
     tick() {
         // 隐藏底部菜单
@@ -55,6 +55,7 @@ class Detils  extends Component{
             }
           })
           .then(res => {
+            
             let Detilslist = res.data.InnerData
             let Detiltext =Detilslist.Prompts
             let DetilImageUrl=Detilslist.Details
@@ -77,23 +78,21 @@ class Detils  extends Component{
                 dataInfoID,
             });
         })
-      }  
+      }
+        
     componentWillMount(){
          this.tick()
+    }
+    gohistory(){
+        let {history,location} = this.props;
+        var curren1 = location.pathname;
+        var curren2 = window.location.hash.slice(1);
+        // if(curren1!=curren2){history.go(-1)}
+        history.go(-1)  //回到上一级路由
     }
     componentWillUnmount() {
         clearInterval(this.interval);
         this.props.changeTabbarStatus(true);
-    }
-    handlerAddincrease(increase){
-        this.setState({
-            inpValu: this.state.inpValu++
-        })
-    }
-    handlerAddreduce(reduce){
-        this.setState({
-            inpValu: this.state.inpValu--
-        })
     }
      // 添加到购物车
      handlerAddToCart(goods){
@@ -104,18 +103,29 @@ class Detils  extends Component{
         if(has.length){
             // 存在
             this.props.changeQty(goods.proId,++goods.qty);
+            this.setState({
+                dellistnumber:goods.qty
+            })
         }else{
             goods.qty = 1;
+            this.setState({
+                dellistnumber:goods.qty
+            })
             this.props.addToCart(goods);
             this.props.changeSize(goods.proId,size);
         }
     }
+    componentDidUpdate(){
+        if(this.state.DetilImageUrl.length==0){
+            Toast.loading('loadding...',)  
+        }
+    }
     render(){
-
-    let {Detilslist,DetilImageUrl,ServiceIcon,Prompts, props,vals,dataInfoID} = this.state;
+    let {Detilslist,DetilImageUrl,ServiceIcon,Prompts, props,inpValu,dataInfoID} = this.state;
     return <dl i="detilslistdl">
         <div id="topbar" className="header" >
-                <div  className="header-content">  
+                <div  className="header-content">
+                    <span onClick={this.gohistory}></span>  
                     <p  className="header-title">商品介绍</p>  
                 </div>
         </div>
@@ -171,10 +181,8 @@ class Detils  extends Component{
             <br />
             <br />
             <div className="GroupAttrsone GroupAttrsfive">
-                <span>数量: </span>
-                <button onClick={this.handlerAddincrease}>-</button>
-                <input  type="text"  defaultValue={this.state.inpValu}/>
-                <button onClick={this.handlerAddreduce}>+</button>
+                <span>商品数量: </span>
+                50
             </div>
             <br />
             <br />
@@ -213,7 +221,7 @@ class Detils  extends Component{
             </a> <i className={"fal fa-user-astronaut"}></i>
             <a  target="_self" className="f-service f-cart">
             <FontAwesomeIcon icon={faShoppingCart}/>
-                <span  className="cart-num">{this.props.cartQty}</span>
+                <span  className="cart-num">{this.state.dellistnumber}</span>
             </a> 
             <button onClick={this.handlerAddToCart.bind(this,dataInfoID)} className="f-btn-add">加入购物车</button> 
         </footer>
@@ -221,7 +229,7 @@ class Detils  extends Component{
     </dl>
     }
 }
-let mapStateToProps=state=>({cartlist:state.cartReducer.goodslist});
+let mapStateToProps=state=>({cartlist:state.cartReducer.goodslist,number:state.cartReducer.dellistnumber});
 let mapDispatchToProps = dispatch=>{
     return {
         // 把changeTabbarStatus方法映射到props
@@ -236,7 +244,13 @@ let mapDispatchToProps = dispatch=>{
         },
         changeSize(proId,size){
             dispatch(cart.size(proId,size))
-        }
+        },
+        jia(Detils){
+            dispatch(cart.jia(Detils))
+        },
+        jian(Detils){
+            dispatch(cart.jian(Detils))
+        },
     }
 }
 // provider  :给下面所有子组件提供store   connect(连接)

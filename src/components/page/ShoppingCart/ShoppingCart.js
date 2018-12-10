@@ -11,7 +11,15 @@ class ShoppingCart extends Component{
         super();
         this.state = {
             goolist:[],
-        }
+		}
+		this.gohistory = this.gohistory.bind(this); 
+	}
+	gohistory(){
+        let {history,location} = this.props;
+        var curren1 = location.pathname;
+        var curren2 = window.location.hash.slice(1);
+        // if(curren1!=curren2){history.go(-1)}
+        history.go(-1)  //回到上一级路由
     }
     componentWillMount(){
         console.log(this.props);
@@ -20,7 +28,8 @@ class ShoppingCart extends Component{
         console.log(this.props);
         return <div className="constent_wandering">
         <div id="topbar" className="header" >
-            <div  className="header-content">  
+            <div  className="header-content">
+				<span onClick={this.gohistory}></span>  
                 <p  className="header-title">购物车</p>  
             </div>
         </div>

@@ -81,7 +81,20 @@ body {
     margin: 0 auto;
     position: relative;
 }
-
+.header-content span{
+    display: inline-block;
+    height: 100%;
+    line-height: 100%;
+    background: #c00;
+    text-align: center;
+    background: url(../image/huishang.png) no-repeat;
+    background-size: 35% 35%;
+    background-position: sp(15);
+    position: absolute;
+    left: 0;
+    top:0;
+    width: sp(48);
+}
 .header-title {
     margin: 0 auto;
     line-height: sp(57);
@@ -527,8 +540,6 @@ i {
 }
 
 .hesmartop {
-    margin-top: sp(20);
-    height: sp(10);
     background: #89be48;
 
     img {
@@ -727,4 +738,182 @@ i {
     background: #83b842;
     line-height: sp(60);
     border-bottom: sp(1) solid #ccc;
+}
+
+// 登录注册bufen
+.classlogin{
+    width: 100%;
+    height: 100%;
+}
+.old_user_login{
+    width: 100%;
+    height: sp(150);
+    background: #fff;
+    position: relative;
+    img{
+        width: sp(166);
+        overflow: hidden;
+        display: block;
+        position: absolute;
+        top: 27%;
+        left: 50%;
+        margin-left: sp(-66);
+    }
+}
+.acct_top_back {
+    width: sp(30);
+    height: sp(30);
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    left: .3rem;
+    top: sp(46);
+    border: 1px solid #3aad36;
+}
+.acct_top_back:after {
+    content: "";
+    width: sp(15);
+    height: sp(15);
+    display: block;
+    transform: rotate(-45deg);
+    border-left: 1px solid #3aad36;
+    border-top: 1px solid #3aad36;
+    position: absolute;
+    left: sp(10);
+    top: sp(7);
+}
+.bg-wrap{
+    background: url(http://i1.lifevccdn.com/images/m/account/login-big-bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    background-position: bottom;
+    height: sp(720);
+    // flex: 1;
+}
+
+.login_content {
+    width: 100%;
+    // height: sp(368);
+    box-sizing: border-box;
+    h1{
+        width: 100%;
+        text-align: center;
+        color: #037049;
+        font-size: sp(24);
+        line-height: sp(95);
+        font-weight: normal;
+        box-sizing: border-box;
+        height: sp(95);
+    }
+    .fm_list li{
+        width: 90%;
+        margin: 0 auto;
+        height: sp(57);
+        border-bottom: 1px solid #dbdbdb;
+        position: relative;
+    }
+    .field_ipt{
+        font-size: sp(22);
+        width: 100%;
+        background: transparent;
+        position: absolute;
+        left: 0;
+        border: 0;
+        top: 0;
+        font-family: Microsoft YaHei;
+        height: sp(57);
+        box-sizing: border-box;
+       
+    }
+    .fidld_skip{
+        top: .24rem;
+        display: inline-block;
+        float: right;
+        text-align: right;
+        font-size: sp(16);
+        color: #3aad36;
+        text-decoration: none;
+        border: 1px solid #3aad36;
+        border-radius: sp(4);
+        padding: sp(8) sp(13);
+        text-align: center;
+        position: absolute;
+        right: 0;
+        top: sp(10);
+    }
+    .set_link {
+        padding: sp(0) sp(14);
+        line-height: sp(57);
+        text-align: right;
+        height: sp(57);
+        width: 90%;
+        margin: 0 auto;
+        font-size: sp(16);
+        box-sizing: border-box;
+        position: relative;
+        a{
+            color: #3aad36;
+            letter-spacing: 1px;
+            font-size: sp(15);
+            margin: 0 0 sp(8);
+            span {
+                float: right;
+                line-height: sp(57);
+                margin-right: sp(14);
+            }
+            b{
+                width:sp(10);
+                height:sp(10);
+                display: inline-block;
+                margin-right: sp(2);
+                border: 1px solid #ccc;
+            }
+            .active{
+                background: red;
+            }
+        }
+    }
+}
+.btn_login,.btn_regisiter{
+    width: 80%;
+    overflow: hidden;
+    display: block;
+    outline: none;
+    text-align: center;
+    font-size: sp(20);
+    color: #fff;
+    line-height: sp(52);
+    letter-spacing: sp(20);
+    text-indent: sp(20);
+    box-sizing: border-box;
+}
+.btn_login{
+    margin: 0 auto sp(15);
+    background-color: #3aad36;
+    border: 1px solid #3aad36;
+    border-radius: sp(5);
+}
+.btn_regisiter{
+    margin: sp(10) auto 0;
+    background-color: #8a8a8a;
+    border: 1px solid #8a8a8a;
+    border-radius: sp(5);
+    opacity: .5;
+    fill-opacity: 50%;
+}
+
+.classregister .btn_login{
+    margin: 0 auto sp(15);
+    background-color: #8a8a8a;
+    border: 1px solid #8a8a8a;
+    border-radius: sp(5);
+    opacity: .5;
+}
+
+.classregister .btn_regisiter{
+    margin: sp(10) auto 0;
+    background-color: #3aad36;
+    border: 1px solid #3aad36;
+    border-radius: sp(5);
+    opacity: 1;
+    fill-opacity: 50%;
 }

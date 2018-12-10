@@ -20,7 +20,7 @@ class Account extends Component{
                 <div className="accountuser">
                 <div className="accountpass">
                     <h3>你还未登录</h3>
-                    <p className="caccountp"><span>登录</span>|<span>注册</span></p>
+                    <p className="caccountp"><span><a href="#/login">登录</a></span>|<span>注册</span></p>
                 </div>
                 </div>
                 <div className="accountone">

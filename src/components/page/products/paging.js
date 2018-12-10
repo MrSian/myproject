@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
-import {Tabs, WhiteSpace, Badge,List,Carousel,Grid} from 'antd-mobile';
+import {Tabs,Toast, WhiteSpace, Badge,List,Carousel,Grid} from 'antd-mobile';
 
 class Paging extends Component{
     constructor(){
@@ -28,11 +28,14 @@ class Paging extends Component{
             parameterdata:[],
             parameterIDdata:'',
             parametertab:1,
+            refreshing: false,
+            down: true,
         }
         // this.onTabClickpaging=this.onTabClickpaging.bind(this)
     }
     tick(){
-        this.state.paginglist=[];
+        
+        Toast.loading('loadding...',1,)   
         let {state:parameterdata,IDstate:parameterIDdata} = this.props.location;
         // console.log(this.state.parametertab)
         if(parameterdata){
@@ -42,6 +45,7 @@ class Paging extends Component{
             localStorage.setItem('parameterdata',JSON.stringify(parameterdata));
         }else{
             // 如果没有传入，则重新发起请求
+
             parameterIDdata = JSON.parse(localStorage.getItem('parameterIDdata'));
             parameterdata = JSON.parse(localStorage.getItem('parameterdata'));
           
@@ -66,27 +70,21 @@ class Paging extends Component{
     componentWillMount(){
         this.tick()
     }
-    shouldComponentUpdate(nextProps,nextState){
-        console.log(nextState)
-        if(this.state.parametertab==nextState.parametertab){
-            return true
-        }
-        // this.tick()
-    }
-    onTabClickpaging( index,tab){
-        // console.log(tab)
-        // console.log(index)
-        // let {history} = this.props;
-        // if(index==tab.icon){
-        //     return false;
-        // }
-        // history.push({
-        //     state:tab.icon,
-        // });
+    // shouldComponentUpdate(nextProps,nextState){
+    //     console.log(nextState)
+    //     if(this.state.parametertab==nextState.parametertab){
+    //         return true
+    //     }
+    //     // this.tick()
+    // }
+    onTabClickpaging(index){
+        this.state.paginglist=[];
+        var parametertab = index.icon;
         this.setState({
-            parametertab:tab.icon
-        })
-        // console.log(this.state.parametertab)
+            parametertab
+        });
+        this.tick()
+        console.log(this.state.parametertab)
     }
     componentWillUnMount = () => {
         this.setState = (state,callback)=>{
@@ -103,15 +101,15 @@ class Paging extends Component{
         </div>
         <Tabs tabs={tabs}
         initialPage={0}
-        onChange={(tab, index) => { console.log('onChange', index, tab); }}
-        onTabClick={this.onTabClickpaging.bind(this, this.state.parametertab)}
+        onChange={this.onTabClickpaging.bind(this)}
+        onTabClick={this.onTabClickpaging.bind(this)}
         >
        <div className='wrapShelf'>
             <Grid
             data={paginglist} 
             columnNum={1} 
             activeClassName="active" 
-            itemStyle={{height:'310px'}}
+            itemStyle={{minHeight:'310px',maxHeight:'450px'}}
             renderItem={(list,idx)=>{
                 return(
                     <div className='shelfItem'

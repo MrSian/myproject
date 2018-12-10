@@ -4,6 +4,18 @@ export function add(goods){
         payload:goods
     }
 }
+export function jia(goods){
+    return {
+        type:'ADD_TO_JIA',
+        payload:goods
+    }
+}
+export function jian(goods){
+    return {
+        type:'ADD_TO_JIAN',
+        payload:goods
+    }
+}
 
 export function remove(proId){
     return {

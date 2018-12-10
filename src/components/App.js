@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-
+import axios from 'axios';
 import { TabBar } from 'antd-mobile';
 // 引入TabBar样式
 import 'antd-mobile/dist/antd-mobile.css'
@@ -16,6 +16,8 @@ import {ShoppingCart} from './page/ShoppingCart/ShoppingCart'  //购物车
 import {Account} from './page/account/account'  //账户中心
 import {NotFound,Helep} from './page/NotFound/NotFound'  //404页面
 import {Detils} from './page/detils/detils'   //详情页面
+import {Login} from './page/login/login' 
+import {Register} from './page/register/register' 
 
 import {Route,NavLink,Redirect,Switch,Scene,withRouter} from 'react-router-dom';
 
@@ -37,6 +39,9 @@ library.add(
     faCompass,
     faShoppingCart,
     faUser)
+
+
+axios.defaults.baseURL="http://localhost:8000";
 
 class App extends Component{
     constructor(){
@@ -128,6 +133,8 @@ class App extends Component{
             <Route path="/Detils/:id" component={Detils} />
             <Route path="/ShoppingCart" component={ShoppingCart} />
             <Route path="/account" component={Account} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route path="/404" component={NotFound} />
             <Redirect from="/"  to="/home" exact/>
             <Redirect  to="/404" />
