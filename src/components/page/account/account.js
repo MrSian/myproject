@@ -1,4 +1,21 @@
 import React ,{Component} from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'  //组件
+import {
+    faStroopwafel, 
+    faHome,
+    faListUl,
+    faCompass,
+    faShoppingCart,
+    faUser} from '@fortawesome/free-solid-svg-icons'  //图标
+
+library.add(
+    faStroopwafel, 
+    faHome,
+    faListUl,
+    faCompass,
+    faShoppingCart,
+    faUser)
 class Account extends Component{
     constructor(){
         super();
@@ -20,7 +37,7 @@ class Account extends Component{
                 <div className="accountuser">
                 <div className="accountpass">
                     <h3>你还未登录</h3>
-                    <p className="caccountp"><span><a href="#/login">登录</a></span>|<span>注册</span></p>
+                    <p className="caccountp"><span><a href="#/login">登录</a></span>|<a href="#/register">注册</a></p>
                 </div>
                 </div>
                 <div className="accountone">

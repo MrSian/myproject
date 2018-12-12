@@ -37,7 +37,8 @@ let commonReducer = (state=initState,action)=>{
             return {
                 ...state,
                 goodslist:state.goodslist.filter(goods=>{
-                    if(goods.ItemInfoID === action.payload.proId){
+                    console.log(goods);
+                    if(goods.ItemInfoID === action.payload.ItemInfoID){
                         goods.qty = action.payload.qty
                     }
 

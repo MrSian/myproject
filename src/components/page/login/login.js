@@ -10,10 +10,18 @@ class  Login extends Component{
         this.state={
 
         }
+        this.gohistory = this.gohistory.bind(this); 
         this.onclickdatalodding=this.onclickdatalodding.bind(this); 
     }
     onclickdatalodding(){
 
+    }
+    gohistory(){
+        let {history,location} = this.props;
+        var curren1 = location.pathname;
+        var curren2 = window.location.hash.slice(1);
+        // if(curren1!=curren2){history.go(-1)}
+        history.go(-1)  //回到上一级路由
     }
     logindataprev(){
         this.props.changeTabbarStatus(false);
@@ -28,7 +36,7 @@ class  Login extends Component{
     render(){
         return <div className="classlogin">
         <div  className="old_user_login">
-            <label  className="acct_top_back">
+            <label onClick={this.gohistory}  className="acct_top_back">
             </label> 
             <img  className="acct_top_show" src={image} />
         </div>

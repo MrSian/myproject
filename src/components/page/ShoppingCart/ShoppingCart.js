@@ -43,7 +43,7 @@ class ShoppingCart extends Component{
 							thumb={'http://i.lifevccdn.com'+goods.ImageUrl}
 							extra={<Icon type="cross" onClick={this.props.remove.bind(this,goods.ItemInfoID)}/>}
 						>
-							{goods.Name}
+							{goods.ItemInfoID}
 							<Brief>{goods.slogan}</Brief>
 							<Brief>价格：<span className="price">{goods.SalePrice}</span></Brief>
 							<Stepper showNumber size="small" value={qty} onChange={this.props.changeQty.bind(this,goods.ItemInfoID,qty)} />
@@ -54,6 +54,7 @@ class ShoppingCart extends Component{
         </div>
     }
 }
+
 let mapStateToProps = state=>{
 	return {
 		goodslist:state.cartReducer.goodslist
@@ -62,7 +63,6 @@ let mapStateToProps = state=>{
 let mapDispatchToProps = dispatch=>{
 	return {
 		remove(proId){
-			console.log(proId);
 			dispatch(cartAction.remove(proId))
 		},
 		changeQty(proId,qty){

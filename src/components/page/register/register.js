@@ -10,7 +10,15 @@ class  Register extends Component{
         this.state={
             regiterlist:['请输入手机号','请设置6-20位密码，包含字母，数字或符号','请输入图形验证码','请输入手机验证码'],
         }
+        this.gohistory = this.gohistory.bind(this); 
         // this.onclickdatalodding=this.onclickdatalodding.bind(this); 
+    }
+    gohistory(){
+        let {history,location} = this.props;
+        var curren1 = location.pathname;
+        var curren2 = window.location.hash.slice(1);
+        // if(curren1!=curren2){history.go(-1)}
+        history.go(-1)  //回到上一级路由
     }
     handleSubmit=()=>{
         let name=this.name.value;
@@ -31,7 +39,7 @@ class  Register extends Component{
     render(){
         return <div className="classregister">
         <div  className="old_user_login">
-            <label  className="acct_top_back">
+            <label onClick={this.gohistory}  className="acct_top_back">
             </label> 
             <img  className="acct_top_show" src={image} />
         </div>
@@ -59,7 +67,7 @@ class  Register extends Component{
                     </li> 
                 </ul> 
                 <div  id="setting" className="set_link">
-                    <a  href="javascript:;"><b></b><span >阅读并同意 {"《丽芙家居用户协议》"} 和 {"《隐私声明》"}</span>
+                    <a ><b></b><span >阅读并同意 {"《丽芙家居用户协议》"} 和 {"隐私声明"}</span>
                     </a>
                     <input  type="button" defaultValue="登录" className="btn_login" />
                     <input  type="submit"  defaultValue="注册" className="btn_regisiter" />

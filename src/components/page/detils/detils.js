@@ -94,6 +94,29 @@ class Detils  extends Component{
         clearInterval(this.interval);
         this.props.changeTabbarStatus(true);
     }
+    jian(){
+        if(this.state.inpValu<0){
+            this.setState({
+                inpValu:0
+            })
+        }else{
+            this.setState({
+                inpValu:--this.state.inpValu
+            })
+        }
+        
+    }
+    jia(){
+        if(this.state.inpValu>=100){
+            this.setState({
+                inpValu:100
+            })
+        }else{
+            this.setState({
+                inpValu:++this.state.inpValu
+            })
+        }
+    }
      // 添加到购物车
      handlerAddToCart(goods){
         let has = this.props.cartlist.filter(item=>{
@@ -107,7 +130,7 @@ class Detils  extends Component{
                 dellistnumber:goods.qty
             })
         }else{
-            goods.qty = 1;
+            goods.qty = this.state.inpValu;
             this.setState({
                 dellistnumber:goods.qty
             })
@@ -115,11 +138,15 @@ class Detils  extends Component{
             this.props.changeSize(goods.proId,size);
         }
     }
+    valuetype(){
+        console.log(this)
+    }
     componentDidUpdate(){
         if(this.state.DetilImageUrl.length==0){
             Toast.loading('loadding...',)  
         }
     }
+
     render(){
     let {Detilslist,DetilImageUrl,ServiceIcon,Prompts, props,inpValu,dataInfoID} = this.state;
     return <dl i="detilslistdl">
@@ -182,7 +209,9 @@ class Detils  extends Component{
             <br />
             <div className="GroupAttrsone GroupAttrsfive">
                 <span>商品数量: </span>
-                50
+                <input onClick={this.jian.bind(this)} type="button" defaultValue="-" />
+                <input onChange={this.valuetype.bind(this)} type="text" value={this.state.inpValu} />
+                <input onClick={this.jia.bind(this)} type="button" defaultValue="+" />
             </div>
             <br />
             <br />

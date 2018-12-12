@@ -702,7 +702,7 @@ i {
         color: #009c42;
         border: 1px solid #009d42;
 
-        span {
+        a {
             display: inline-block;
             margin: sp(10) sp(10);
         }
@@ -738,6 +738,10 @@ i {
     background: #83b842;
     line-height: sp(60);
     border-bottom: sp(1) solid #ccc;
+}
+.constent{
+    width: 100%;
+    height: 100%;
 }
 
 // 登录注册bufen
@@ -786,7 +790,7 @@ i {
     background: url(http://i1.lifevccdn.com/images/m/account/login-big-bg.jpg) no-repeat;
     background-size: 100% 100%;
     background-position: bottom;
-    height: sp(720);
+    height: 81%;
     // flex: 1;
 }
 
